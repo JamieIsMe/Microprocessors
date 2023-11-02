@@ -196,7 +196,7 @@ uint16_t transferSPI16(uint16_t data)
     SPI1->DR = data;
     Timeout = 1000000;
     while (((SPI1->SR & (1 << 7))!=0)&&(Timeout--));        
-	  ReturnValue = SPI1->DR;
+	ReturnValue = SPI1->DR;
 	
     return (uint16_t)ReturnValue;
 }
