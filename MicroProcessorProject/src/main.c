@@ -60,9 +60,6 @@ int main()
 	initClock();
 	initSysTick();
 	setupIO();
-	fillCircle(21,21,21,RGBToWord(173,17,212));
-	fillCircle(61,21,21,RGBToWord(173,17,212));
-	fillCircle(101,21,21,RGBToWord(173,17,212));
 	putImage(20,80,10,9,heart,0,0);
 	initSerial();
 	eputs("Starting the game");
