@@ -60,7 +60,6 @@ int main()
 	initClock();
 	initSysTick();
 	setupIO();
-	putImage(20,80,10,9,heart,0,0);
 	initSerial();
 	eputs("Starting the game");
 	fillRectangle(0,0,128,159,RGBToWord(255,255,255));
@@ -71,6 +70,7 @@ int main()
 		seed++;
 	}
 	fillRectangle(0,0,128,159,RGBToWord(0,0,0));
+	putImage(20,80,10,9,heart,0,0);
 	initprbs(seed);
 	printDecimal(prbs());
 	while(1)
