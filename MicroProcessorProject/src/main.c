@@ -53,8 +53,8 @@ int main()
 	int toggle = 0;
 	int hmoved = 0;
 	int vmoved = 0;
-	uint16_t x = 50;
-	uint16_t y = 50;
+	uint16_t x = 64;
+	uint16_t y = 70;
 	uint16_t oldx = x;
 	uint16_t oldy = y;
 	initClock();
@@ -69,6 +69,7 @@ int main()
 	while (!leftPressed() || seed == 0){
 		seed++;
 	}
+	//Sets Background To Black
 	fillRectangle(0,0,128,159,RGBToWord(0,0,0));
 	putImage(20,80,10,9,heart,0,0);
 	initprbs(seed);
