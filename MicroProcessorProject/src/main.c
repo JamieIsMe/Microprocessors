@@ -74,6 +74,9 @@ int main()
 	putImage(20,80,10,9,heart,0,0);
 	initprbs(seed);
 	printDecimal(prbs());
+	//Section Below For Testing Collisions
+	fillRectangle(0,130,50,10,RGBToWord(255,255,255));
+	//Section Above For Testing Collisions
 	while(1)
 	{
 		hmoved = vmoved = 0;
@@ -118,7 +121,7 @@ int main()
 		if ((vmoved) || (hmoved))
 		{
 			// only redraw if there has been some movement (reduces flicker)
-			fillRectangle(oldx,oldy,12,16,0);
+			fillRectangle(oldx,oldy,10,9,0);
 			oldx = x;
 			oldy = y;					
 			if (hmoved)
@@ -138,6 +141,9 @@ int main()
 			if (isInside(20,80,12,16,x,y) || isInside(20,80,12,16,x+12,y) || isInside(20,80,12,16,x,y+16) || isInside(20,80,12,16,x+12,y+16) )
 			{
 				printTextX2("GLUG!", 10, 20, RGBToWord(0xff,0xff,0), 0);
+			}
+			if (isInside(0,130,50,10,x,y) || isInside(0,130,50,10,x+50,y) || isInside(0,130,50,10,x,y+10) || isInside(0,130,50,10,x+50,y+10)){
+				printTextX2("HIT!", 10, 20, RGBToWord(0xff,0xff,0), 0);
 			}
 		}		
 		delay(50);
