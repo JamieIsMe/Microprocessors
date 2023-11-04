@@ -64,7 +64,7 @@ int main()
 	eputs("Starting the game");
 	fillRectangle(0,0,128,159,RGBToWord(255,255,255));
 	printText("Press Left", 30,30,RGBToWord(0,0,0),RGBToWord(255,255,255));
-	printText("To Start", 30,45,RGBToWord(0,0,0),RGBToWord(255,255,255));
+	printText(" To Start", 30,45,RGBToWord(0,0,0),RGBToWord(255,255,255));
 	uint32_t seed = 0;
 	while (!leftPressed() || seed == 0){
 		seed++;
