@@ -46,6 +46,23 @@ const uint16_t heart[]=
 	0,40224,40224,0,0,0,0,40224,40224,0,40224,40224,40224,40224,0,0,40224,40224,40224,40224,40224,40224,40224,40224,40224,40224,40224,40224,40224,40224,40224,40224,40224,40224,40224,40224,40224,40224,40224,40224,40224,40224,40224,40224,40224,40224,40224,40224,40224,40224,40224,40224,40224,40224,40224,40224,40224,40224,40224,40224,0,40224,40224,40224,40224,40224,40224,40224,40224,0,0,0,40224,40224,40224,40224,40224,40224,0,0,0,0,0,40224,40224,40224,40224,0,0,0,
 };
 
+void InitialiseGame(){
+	fillRectangle(0,0,128,159,RGBToWord(255,255,255));
+	printText("Press Left", 30,30,RGBToWord(0,0,0),RGBToWord(255,255,255));
+	printText(" To Start", 30,45,RGBToWord(0,0,0),RGBToWord(255,255,255));
+	uint32_t seed = 0;
+	while (!leftPressed() || seed == 0){
+		seed++;
+	}
+	//Sets Background To Black
+	fillRectangle(0,0,128,159,RGBToWord(0,0,0));
+	putImage(20,80,10,9,heart,0,0);
+	initprbs(seed);
+	printDecimal(prbs());
+	//Section Below For Testing Collisions
+	fillRectangle(0,130,50,10,RGBToWord(255,255,255));
+
+};
 int main()
 {
 	int hinverted = 0;
@@ -144,6 +161,10 @@ int main()
 			}
 			if (isInside(0,130,50,10,x,y) || isInside(0,130,50,10,x+50,y) || isInside(0,130,50,10,x,y+10) || isInside(0,130,50,10,x+50,y+10)){
 				printTextX2("HIT!", 10, 20, RGBToWord(0xff,0xff,0), 0);
+				//Sets The Character Coords Back To Default
+				x = 64;
+				y = 70;
+				InitialiseGame();
 			}
 		}		
 		delay(50);
