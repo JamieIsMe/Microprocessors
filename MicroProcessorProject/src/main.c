@@ -62,8 +62,9 @@ void InitialiseGame(){
 	initprbs(seed);
 	printDecimal(prbs());
 	//Section Below For Testing Collisions
-	fillRectangle(0,130,50,10,RGBToWord(255,255,255));
-
+	fillRectangle(0,130,50,5,RGBToWord(255,255,255));
+	//Sets Barrier to Dimgrey
+	fillRectangle(0,60,128,5,RGBToWord(105,105,105));
 };
 
 void death()
@@ -102,19 +103,30 @@ int main()
 	}
 	//Sets Background To Black
 	fillRectangle(0,0,128,159,RGBToWord(0,0,0));
+	//Sets Barrier to Dimgrey
+	fillRectangle(0,60,128,5,RGBToWord(105,105,105));
 	putImage(20,80,10,9,heart,0,0);
 	initprbs(seed);
 	printDecimal(prbs());
 	//Section Below For Testing Collisions
-	fillRectangle(0,130,50,10,RGBToWord(255,255,255));
+	fillRectangle(0,130,50,5,RGBToWord(255,255,255));
 	//Section Above For Testing Collisions
 	while(1)
 	{
-		oldenemyx = enemyx;
-		oldenemyy = enemyy;
-		enemyy--;
-		fillRectangle(oldenemyx,oldenemyy,50,10,RGBToWord(0,0,0));
-		fillRectangle(enemyx,enemyy,50,10,RGBToWord(255,255,255));
+		if (enemyy > 65)
+		{
+			oldenemyx = enemyx;
+			oldenemyy = enemyy;
+			enemyy--;
+			fillRectangle(oldenemyx,oldenemyy,50,5,RGBToWord(0,0,0));
+			fillRectangle(enemyx,enemyy,50,5,RGBToWord(255,255,255));
+		}
+		else
+		{
+			fillRectangle(enemyx,enemyy,50,5,RGBToWord(0,0,0));
+			enemyx = 0;
+			enemyy = 130;
+		}
 		hmoved = vmoved = 0;
 		hinverted = vinverted = 0;
 		if ((GPIOB->IDR & (1 << 4))==0) // right pressed
@@ -145,13 +157,16 @@ int main()
 				vinverted = 0;
 			}
 		}
-		if ( (GPIOA->IDR & (1 << 8)) == 0) // up pressed
-		{			
-			if (y > 16)
-			{
-				y = y - 1;
-				vmoved = 1;
-				vinverted = 1;
+		if (y > 65)
+		{
+			if ( (GPIOA->IDR & (1 << 8)) == 0) // up pressed
+			{			
+				if (y > 16)
+				{
+					y = y - 1;
+					vmoved = 1;
+					vinverted = 1;
+				}
 			}
 		}
 		if ((vmoved) || (hmoved))
