@@ -110,7 +110,7 @@ int main()
 	printDecimal(prbs());
 	//Section Below For Testing Collisions
 	fillRectangle(0,130,50,5,RGBToWord(255,255,255));
-	//Section Above For Testing Collisions
+	//Section Above For Testing Collisions`
 	while(1)
 	{
 		if (enemyy > 65)
@@ -124,8 +124,9 @@ int main()
 		else
 		{
 			fillRectangle(enemyx,enemyy,50,5,RGBToWord(0,0,0));
-			enemyx = 0;
+			enemyx = random(0,40);
 			enemyy = 130;
+			fillRectangle(enemyx,enemyy,50,5,RGBToWord(255,255,255));
 		}
 		hmoved = vmoved = 0;
 		hinverted = vinverted = 0;
@@ -195,7 +196,7 @@ int main()
 			}
 			
 		}		
-		if (isInside(enemyx,enemyy,50,10,x,y) || isInside(enemyx,enemyy,50,10,x+50,y) || isInside(enemyx,enemyy,50,10,x,y+5) || isInside(enemyx,enemyy,50,10,x+50,y+5)){
+		if (isInside(enemyx,enemyy,50,5,x,y) || isInside(enemyx,enemyy,50,5,x+50,y) || isInside(enemyx,enemyy,50,5,x,y+5) || isInside(enemyx,enemyy,50,5,x+50,y+5)){
 			//Sets The Character Coords Back To Default
 			x = 64;
 			y = 70;
