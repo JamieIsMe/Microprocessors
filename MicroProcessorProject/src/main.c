@@ -13,6 +13,8 @@ void pinMode(GPIO_TypeDef *Port, uint32_t BitNumber, uint32_t Mode);
 int leftPressed(void);
 int rightPressed(void);
 int upPressed(void);
+void death(void);
+void InitialiseGame(void);
 
 volatile uint32_t milliseconds;
 
@@ -63,6 +65,14 @@ void InitialiseGame(){
 	fillRectangle(0,130,50,10,RGBToWord(255,255,255));
 
 };
+
+void death()
+{
+	fillRectangle(0,0,128,159,RGBToWord(255,255,255));
+	printText("You Died...", 30,30,RGBToWord(255,0,0),RGBToWord(255,255,255));
+	delay(2000);
+}
+
 int main()
 {
 	int hinverted = 0;
@@ -176,6 +186,7 @@ int main()
 			y = 70;
 			enemyx = 0;
 			enemyy = 130;
+			death();
 			InitialiseGame();
 			}
 		delay(50);
