@@ -72,6 +72,10 @@ int main()
 	int vmoved = 0;
 	uint16_t x = 64;
 	uint16_t y = 70;
+	uint16_t oldenemyx;
+	uint16_t oldenemyy;
+	uint16_t enemyx = 0;
+	uint16_t enemyy = 130;
 	uint16_t oldx = x;
 	uint16_t oldy = y;
 	initClock();
@@ -96,6 +100,11 @@ int main()
 	//Section Above For Testing Collisions
 	while(1)
 	{
+		oldenemyx = enemyx;
+		oldenemyy = enemyy;
+		enemyy--;
+		fillRectangle(oldenemyx,oldenemyy,50,10,RGBToWord(0,0,0));
+		fillRectangle(enemyx,enemyy,50,10,RGBToWord(255,255,255));
 		hmoved = vmoved = 0;
 		hinverted = vinverted = 0;
 		if ((GPIOB->IDR & (1 << 4))==0) // right pressed
@@ -159,15 +168,18 @@ int main()
 			{
 				printTextX2("GLUG!", 10, 20, RGBToWord(0xff,0xff,0), 0);
 			}
-			if (isInside(0,130,50,10,x,y) || isInside(0,130,50,10,x+50,y) || isInside(0,130,50,10,x,y+10) || isInside(0,130,50,10,x+50,y+10)){
-				printTextX2("HIT!", 10, 20, RGBToWord(0xff,0xff,0), 0);
-				//Sets The Character Coords Back To Default
-				x = 64;
-				y = 70;
-				InitialiseGame();
-			}
+			
 		}		
+		if (isInside(enemyx,enemyy,50,10,x,y) || isInside(enemyx,enemyy,50,10,x+50,y) || isInside(enemyx,enemyy,50,10,x,y+10) || isInside(enemyx,enemyy,50,10,x+50,y+10)){
+			//Sets The Character Coords Back To Default
+			x = 64;
+			y = 70;
+			enemyx = 0;
+			enemyy = 130;
+			InitialiseGame();
+			}
 		delay(50);
+
 	}
 	return 0;
 }
