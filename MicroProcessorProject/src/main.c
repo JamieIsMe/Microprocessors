@@ -105,7 +105,6 @@ int main()
 	fillRectangle(0,0,128,159,RGBToWord(0,0,0));
 	//Sets Barrier to Dimgrey
 	fillRectangle(0,60,128,5,RGBToWord(105,105,105));
-	putImage(20,80,10,9,heart,0,0);
 	initprbs(seed);
 	printDecimal(prbs());
 	//Section Below For Testing Collisions
@@ -189,14 +188,9 @@ int main()
 			{
 				putImage(x,y,10,9,heart,0,0);
 			}
-			// Now check for an overlap by checking to see if ANY of the 4 corners of deco are within the target area
-			if (isInside(20,80,12,16,x,y) || isInside(20,80,12,16,x+12,y) || isInside(20,80,12,16,x,y+16) || isInside(20,80,12,16,x+12,y+16) )
-			{
-				printTextX2("GLUG!", 10, 20, RGBToWord(0xff,0xff,0), 0);
-			}
 			
 		}		
-		//Checks If User Is Inside The Enemy
+		//Checks If User Is Inside The Enemy	
 		if (isInside(enemyx,enemyy,50,5,x,y) || isInside(enemyx,enemyy,50,5,x+10,y) || isInside(enemyx,enemyy,50,5,x,y+9) || isInside(enemyx,enemyy,50,5,x+10,y+9)){
 			//Sets The Character Coords Back To Default
 			x = 64;
