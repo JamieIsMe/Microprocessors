@@ -196,7 +196,7 @@ int main()
 			}
 			
 		}		
-		if (isInside(enemyx,enemyy,50,5,x,y) || isInside(enemyx,enemyy,50,5,x+50,y) || isInside(enemyx,enemyy,50,5,x,y+5) || isInside(enemyx,enemyy,50,5,x+50,y+5)){
+		if (isInside(enemyx,enemyy,50,5,x,y) || isInside(enemyx,enemyy,50,5,x+10,y) || isInside(enemyx,enemyy,50,5,x,y+9) || isInside(enemyx,enemyy,50,5,x+10,y+9)){
 			//Sets The Character Coords Back To Default
 			x = 64;
 			y = 70;
