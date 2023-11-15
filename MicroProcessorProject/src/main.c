@@ -66,8 +66,12 @@ int main()
 	uint16_t y = 70;
 	uint16_t oldenemyx;
 	uint16_t oldenemyy;
+	uint16_t oldenemy2x;
+	uint16_t oldenemy2y;
 	uint16_t enemyx = 0;
-	uint16_t enemyy = 130;
+	uint16_t enemyy = 140;
+	uint16_t enemy2x = 64;
+	uint16_t enemy2y = 140;
 	uint16_t oldx = x;
 	uint16_t oldy = y;
 	initClock();
@@ -89,7 +93,8 @@ int main()
 	initprbs(seed);
 	printDecimal(prbs());
 	//Section Below For Testing Collisions
-	fillRectangle(0,130,20,5,RGBToWord(255,255,255));
+	fillRectangle(0,140,20,5,RGBToWord(255,255,255));
+	fillRectangle(64,140,20,5,RGBToWord(255,255,255));
 	//Section Above For Testing Collisions`
 	while(1)
 	{
@@ -104,9 +109,24 @@ int main()
 		else
 		{
 			fillRectangle(enemyx,enemyy,20,5,RGBToWord(0,0,0));
-			enemyx = random(0,100);
+			enemyx = random(0,44);
 			enemyy = 150;
 			fillRectangle(enemyx,enemyy,20,5,RGBToWord(255,255,255));
+		}
+		if (enemy2y > 65)
+		{
+			oldenemy2x = enemy2x;
+			oldenemy2y = enemy2y;
+			enemy2y--;
+			fillRectangle(oldenemy2x,oldenemy2y,20,5,RGBToWord(0,0,0));
+			fillRectangle(enemy2x,enemy2y,20,5,RGBToWord(255,255,255));
+		}
+		else
+		{
+			fillRectangle(enemy2x,enemy2y,20,5,RGBToWord(0,0,0));
+			enemy2x = random(64,108);
+			enemy2y = 150;
+			fillRectangle(enemy2x,enemy2y,20,5,RGBToWord(255,255,255));
 		}
 		hmoved = vmoved = 0;
 		hinverted = vinverted = 0;
@@ -183,10 +203,19 @@ int main()
 			x = 64;
 			y = 70;
 			enemyx = 0;
-			enemyy = 130;
+			enemyy = 140;
 			death();
 			InitialiseGame();
-			}
+		}
+		else if (isInside(enemy2x,enemy2y,20,5,x,y) || isInside(enemy2x,enemy2y,20,5,x+10,y) || isInside(enemy2x,enemy2y,20,5,x,y+9) || isInside(enemy2x,enemy2y,20,5,x+10,y+9)){
+			//Sets The Character Coords Back To Default
+			x = 64;
+			y = 70;
+			enemy2x = 64;
+			enemy2y = 140;
+			death();
+			InitialiseGame();
+		}
 		delay(50);
 
 	}
