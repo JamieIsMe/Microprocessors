@@ -74,6 +74,8 @@ int main()
 	uint16_t oldx = x;
 	uint16_t oldy = y;
 	uint16_t count = 0;
+	uint16_t hitboxx = random(0,100);
+	uint16_t hitboxy = random(65,140);
 	initClock();
 	initSysTick();
 	setupIO();
@@ -115,7 +117,7 @@ int main()
 			count += 1;
 			if (count == 5)
 			{
-				fillRectangle(random(0,100),random(65,140),10,10,RGBToWord(255,255,204));
+				fillRectangle(hitboxx,hitboxy,10,10,RGBToWord(255,255,204));
 			}
 		}
 		if (enemy2y > 65)
@@ -208,6 +210,7 @@ int main()
 			y = 70;
 			enemyx = 0;
 			enemyy = 140;
+			count = 0;
 			death();
 			InitialiseGame();
 		}
@@ -217,11 +220,15 @@ int main()
 			y = 70;
 			enemy2x = 64;
 			enemy2y = 140;
+			count = 0;
 			death();
 			InitialiseGame();
 		}
 		delay(50);
+		if (isInside(hitboxx,hitboxy,20,5,x,y) || isInside(hitboxx,hitboxy,20,5,x+10,y) || isInside(hitboxx,hitboxy,20,5,x,y+9) || isInside(hitboxx,hitboxy,20,5,x+10,y+9)){
+			// Checks if user is inside the yellow square
 
+		}
 	}
 	return 0;
 }
