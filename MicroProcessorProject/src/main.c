@@ -38,7 +38,6 @@ void InitialiseGame(){
 	}
 	//Sets Background To Black
 	fillRectangle(0,0,128,159,RGBToWord(0,0,0));
-	putImage(20,80,10,9,heart,0,0);
 	putImage(45,20,41,42,flowey,0,0);
 	initprbs(seed);
 	printDecimal(prbs());
@@ -195,7 +194,6 @@ int main()
 			{
 				putImage(x,y,10,9,heart,0,0);
 			}
-			
 		}		
 		//Checks If User Is Inside The Enemy	
 		if (isInside(enemyx,enemyy,20,5,x,y) || isInside(enemyx,enemyy,20,5,x+10,y) || isInside(enemyx,enemyy,20,5,x,y+9) || isInside(enemyx,enemyy,20,5,x+10,y+9)){
