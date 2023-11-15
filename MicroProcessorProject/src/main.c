@@ -43,7 +43,7 @@ void InitialiseGame(){
 	initprbs(seed);
 	printDecimal(prbs());
 	//Section Below For Testing Collisions
-	fillRectangle(0,130,20,5,RGBToWord(255,255,255));
+	//fillRectangle(0,130,20,5,RGBToWord(255,255,255));
 	//Sets Barrier to Dimgrey
 	fillRectangle(0,0,128,65,RGBToWord(255,255,255));
 };
