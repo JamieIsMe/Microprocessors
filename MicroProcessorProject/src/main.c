@@ -117,7 +117,7 @@ int main()
 			count += 1;
 			if (count == 5)
 			{
-				fillRectangle(hitboxx,hitboxy,10,10,RGBToWord(255,255,204));
+				fillRectangle(hitboxx,hitboxy,10,10,RGBToWord(255,255,0));
 			}
 		}
 		if (enemy2y > 65)
@@ -139,7 +139,7 @@ int main()
 		hinverted = vinverted = 0;
 		if ((GPIOB->IDR & (1 << 4))==0) // right pressed
 		{					
-			if (x < 110)
+			if (x < 118)
 			{
 				x = x + 1;
 				hmoved = 1;
@@ -149,7 +149,7 @@ int main()
 		if ((GPIOB->IDR & (1 << 5))==0) // left pressed
 		{			
 			
-			if (x > 10)
+			if (x > 0)
 			{
 				x = x - 1;
 				hmoved = 1;
@@ -158,7 +158,7 @@ int main()
 		}
 		if ( (GPIOA->IDR & (1 << 11)) == 0) // down pressed
 		{
-			if (y < 140)
+			if (y < 150)
 			{
 				y = y + 1;			
 				vmoved = 1;
