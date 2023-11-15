@@ -73,6 +73,7 @@ int main()
 	uint16_t enemy2y = 140;
 	uint16_t oldx = x;
 	uint16_t oldy = y;
+	uint16_t count = 0;
 	initClock();
 	initSysTick();
 	setupIO();
@@ -111,6 +112,11 @@ int main()
 			enemyx = random(0,44);
 			enemyy = 150;
 			fillRectangle(enemyx,enemyy,20,5,RGBToWord(255,255,255));
+			count += 1;
+			if (count == 5)
+			{
+				fillRectangle(random(0,100),random(65,140),10,10,RGBToWord(255,255,204));
+			}
 		}
 		if (enemy2y > 65)
 		{
