@@ -2,6 +2,7 @@
 #include "display.h"
 #include "serial.h"
 #include "prbs.h"
+#include "sound.h"
 void initClock(void);
 void initSysTick(void);
 void SysTick_Handler(void);
@@ -18,6 +19,15 @@ void InitialiseGame(void);
 
 volatile uint32_t milliseconds;
 
+int song[] = {587, 587, 587,  440, 783, 783, 698,587, 698, 783, 523, 523, 587,  440, 783, 783, 698, 587, 698, 783, 493, 493, 587,  440, 783, 783, 698, 587, 698, 783,  440,  440, 587};
+
+void loop(){
+	while (1){
+		for (int i = 0; i<33; i++){
+			playNote(song[i]);
+		}
+	}
+};
 const uint16_t heart[]=
 {
 	0,40224,40224,0,0,0,0,40224,40224,0,40224,40224,40224,40224,0,0,40224,40224,40224,40224,40224,40224,40224,40224,40224,40224,40224,40224,40224,40224,40224,40224,40224,40224,40224,40224,40224,40224,40224,40224,40224,40224,40224,40224,40224,40224,40224,40224,40224,40224,40224,40224,40224,40224,40224,40224,40224,40224,40224,40224,0,40224,40224,40224,40224,40224,40224,40224,40224,0,0,0,40224,40224,40224,40224,40224,40224,0,0,0,0,0,40224,40224,40224,40224,0,0,0,
@@ -76,6 +86,7 @@ int main()
 	uint16_t count = 0;
 	uint16_t hitboxx = random(0,100);
 	uint16_t hitboxy = random(65,140);
+	initSerial();
 	initClock();
 	initSysTick();
 	setupIO();
@@ -98,6 +109,7 @@ int main()
 	fillRectangle(0,140,20,5,RGBToWord(255,255,255));
 	fillRectangle(64,140,20,5,RGBToWord(255,255,255));
 	//Section Above For Testing Collisions`
+	loop();
 	while(1)
 	{
 		if (enemyy > 65)
