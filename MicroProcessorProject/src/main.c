@@ -14,8 +14,9 @@ void pinMode(GPIO_TypeDef *Port, uint32_t BitNumber, uint32_t Mode);
 int leftPressed(void);
 int rightPressed(void);
 int upPressed(void);
-void death(void);
+int death(int);
 void InitialiseGame(void);
+void lvl1(void);
 
 volatile uint32_t milliseconds;
 
@@ -57,13 +58,26 @@ void InitialiseGame(){
 	//fillRectangle(0,130,20,5,RGBToWord(255,255,255));
 	//Sets Barrier to Dimgrey
 	fillRectangle(0,0,128,65,RGBToWord(255,255,255));
+	printText("Oh... a", 60,20,RGBToWord(0,255,0),RGBToWord(255,255,255));
+	printText("fresh soul", 60,30,RGBToWord(0,255,0),RGBToWord(255,255,255));
+	putImage(10,20,41,42,flowey,0,0);
 };
 
-void death()
+void lvl1()
+{
+	printText("Oh... a", 60,20,RGBToWord(0,255,0),RGBToWord(255,255,255));
+	printText("fresh soul", 60,30,RGBToWord(0,255,0),RGBToWord(255,255,255));
+}
+
+int death(levelCount)
 {
 	fillRectangle(0,0,128,159,RGBToWord(255,255,255));
 	printText("You Died...", 30,30,RGBToWord(255,0,0),RGBToWord(255,255,255));
 	delay(2000);
+	if (levelCount == 1)
+	{
+		lvl1();
+	}
 }
 
 int main()
@@ -88,6 +102,7 @@ int main()
 	uint16_t count = 0;
 	uint16_t hitboxx = random(0,100);
 	uint16_t hitboxy = random(65,140);
+	int levelCount = 1;
 	initSerial();
 	initClock();
 	initSysTick();
@@ -111,8 +126,7 @@ int main()
 	fillRectangle(0,140,20,5,RGBToWord(255,255,255));
 	fillRectangle(64,140,20,5,RGBToWord(255,255,255));
 	//Section Above For Testing Collisions`
-	printText("Oh... a", 60,20,RGBToWord(0,255,0),RGBToWord(255,255,255));
-	printText("fresh soul", 60,30,RGBToWord(0,255,0),RGBToWord(255,255,255));
+	lvl1();
 	while(1)
 	{
 		if (enemyy > 65)
@@ -226,7 +240,7 @@ int main()
 			enemyx = 0;
 			enemyy = 140;
 			count = 0;
-			death();
+			death(levelCount);
 			InitialiseGame();
 		}
 		else if (isInside(enemy2x,enemy2y,20,5,x,y) || isInside(enemy2x,enemy2y,20,5,x+10,y) || isInside(enemy2x,enemy2y,20,5,x,y+9) || isInside(enemy2x,enemy2y,20,5,x+10,y+9)){
@@ -236,7 +250,7 @@ int main()
 			enemy2x = 64;
 			enemy2y = 140;
 			count = 0;
-			death();
+			death(levelCount);
 			InitialiseGame();
 		}
 		delay(50);
