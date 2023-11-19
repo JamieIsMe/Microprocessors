@@ -213,7 +213,7 @@ int main()
 			fillRectangle(enemy4x,enemy4y,20,5,RGBToWord(0,0,0));
 			enemy4x = random(64,108);
 			enemy4y = 65;
-			fillRectangle(enemy3x,enemy3y,20,5,RGBToWord(255,255,255));
+			fillRectangle(enemy4x,enemy4y,20,5,RGBToWord(255,255,255));
 			}
 		}
 		hmoved = vmoved = 0;
