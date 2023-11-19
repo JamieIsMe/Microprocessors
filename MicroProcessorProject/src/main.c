@@ -96,14 +96,27 @@ int main()
 	int vmoved = 0;
 	uint16_t x = 64;
 	uint16_t y = 70;
+
+	// Two Bottom Spawning Enemies
 	uint16_t oldenemyx;
 	uint16_t oldenemyy;
 	uint16_t oldenemy2x;
 	uint16_t oldenemy2y;
 	uint16_t enemyx = 0;
-	uint16_t enemyy = 140;
+	uint16_t enemyy = 150;
 	uint16_t enemy2x = 64;
-	uint16_t enemy2y = 140;
+	uint16_t enemy2y = 150;
+	// Two Top Spawning Enemies
+	uint16_t enemy3x = 0;
+	uint16_t enemy3y = 65;
+	uint16_t enemy4x = 64;
+	uint16_t enemy4y = 65;
+	uint16_t oldenemy3x;
+	uint16_t oldenemy3y;
+	uint16_t oldenemy4x;
+	uint16_t oldenemy4y;
+
+
 	uint16_t oldx = x;
 	uint16_t oldy = y;
 	uint16_t hitboxx = random(0,100);
@@ -129,8 +142,8 @@ int main()
 	initprbs(seed);
 	printDecimal(prbs());
 	//Section Below For Testing Collisions
-	fillRectangle(0,140,20,5,RGBToWord(255,255,255));
-	fillRectangle(64,140,20,5,RGBToWord(255,255,255));
+	//fillRectangle(0,140,20,5,RGBToWord(255,255,255));
+	//fillRectangle(64,140,20,5,RGBToWord(255,255,255));
 	//Section Above For Testing Collisions`
 	lvl1();
 	while(1)
@@ -149,11 +162,24 @@ int main()
 			enemyx = random(0,44);
 			enemyy = 150;
 			fillRectangle(enemyx,enemyy,20,5,RGBToWord(255,255,255));
-			if (count == 5)
-			{
-				fillRectangle(hitboxx,hitboxy,10,10,RGBToWord(255,255,0));
-			} else{
+			if (count != 5){
 				count += 1;
+			}
+		}
+		//New Enemy Spawns From Top For Level 2
+		if (levelCount >= 2){
+			if (enemy3y < 159){
+				oldenemy3x = enemy3x;
+				oldenemy3y = enemy3y;
+				enemy3y++;
+				fillRectangle(oldenemy3x,oldenemy3y,20,5,RGBToWord(0,0,0));
+				fillRectangle(enemy3x,enemy3y,20,5,RGBToWord(255,255,255));
+			}
+			else {
+			fillRectangle(enemy3x,enemy3y,20,5,RGBToWord(0,0,0));
+			enemy3x = random(0,44);
+			enemy3y = 65;
+			fillRectangle(enemy3x,enemy3y,20,5,RGBToWord(255,255,255));
 			}
 		}
 		if (enemy2y > 65)
@@ -163,6 +189,10 @@ int main()
 			enemy2y--;
 			fillRectangle(oldenemy2x,oldenemy2y,20,5,RGBToWord(0,0,0));
 			fillRectangle(enemy2x,enemy2y,20,5,RGBToWord(255,255,255));
+			if (count == 5)
+			{
+				fillRectangle(hitboxx,hitboxy,10,10,RGBToWord(255,255,0));
+			}
 		}
 		else
 		{
@@ -170,6 +200,21 @@ int main()
 			enemy2x = random(64,108);
 			enemy2y = 150;
 			fillRectangle(enemy2x,enemy2y,20,5,RGBToWord(255,255,255));
+		}
+		if (levelCount >= 2){
+			if (enemy4y < 159){
+				oldenemy4x = enemy4x;
+				oldenemy4y = enemy4y;
+				enemy4y++;
+				fillRectangle(oldenemy4x,oldenemy4y,20,5,RGBToWord(0,0,0));
+				fillRectangle(enemy4x,enemy4y,20,5,RGBToWord(255,255,255));
+			}
+			else{
+			fillRectangle(enemy4x,enemy4y,20,5,RGBToWord(0,0,0));
+			enemy4x = random(64,108);
+			enemy4y = 65;
+			fillRectangle(enemy3x,enemy3y,20,5,RGBToWord(255,255,255));
+		}
 		}
 		hmoved = vmoved = 0;
 		hinverted = vinverted = 0;
@@ -245,9 +290,9 @@ int main()
 			x = 64;
 			y = 70;
 			enemyx = 0;
-			enemyy = 140;
+			enemyy = 150;
 			enemy2x = 64;
-			enemy2y = 140;
+			enemy2y = 150;
 			count = 0;
 			InitialiseGame(levelCount);
 		}
@@ -256,9 +301,9 @@ int main()
 			x = 64;
 			y = 70;
 			enemyx = 0;
-			enemyy = 140;
+			enemyy = 150;
 			enemy2x = 64;
-			enemy2y = 140;
+			enemy2y = 150;
 			count = 0;
 			InitialiseGame(levelCount);
 		}
