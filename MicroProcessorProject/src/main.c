@@ -14,10 +14,11 @@ void pinMode(GPIO_TypeDef *Port, uint32_t BitNumber, uint32_t Mode);
 int leftPressed(void);
 int rightPressed(void);
 int upPressed(void);
-int death(int);
+void death(void);
 void InitialiseGame(int);
 void lvl1(void);
 void lvl2(void);
+void lvl3(void);
 
 volatile uint32_t milliseconds;
 uint16_t count = 0;
@@ -66,6 +67,9 @@ void InitialiseGame(levelCount){
 	else if (levelCount == 2){
 		lvl2();
 	}
+	else if (levelCount == 3){
+		lvl3();
+	}
 };
 
 void lvl1()
@@ -76,11 +80,16 @@ void lvl1()
 }
 
 void lvl2(){
-	printText("Ouch..", 60,20,RGBToWord(0,255,0),RGBToWord(255,255,255));
-	printText("that hurts", 60,30,RGBToWord(0,255,0),RGBToWord(255,255,255));
+	printText("Ouch..", 60,20,RGBToWord(255,165,0),RGBToWord(255,255,255));
+	printText("that hurts", 60,30,RGBToWord(255,165,0),RGBToWord(255,255,255));
 }
 
-int death(levelCount)
+void lvl3(){
+	printText("Thats it.", 60,20,RGBToWord(255,0,0),RGBToWord(255,255,255));
+	printText("DIE!", 60,30,RGBToWord(255,0,0),RGBToWord(255,255,255));
+}
+
+void death()
 {
 	fillRectangle(0,0,128,159,RGBToWord(255,255,255));
 	printText("You Died...", 30,30,RGBToWord(255,0,0),RGBToWord(255,255,255));
@@ -95,7 +104,7 @@ int main()
 	int hmoved = 0;
 	int vmoved = 0;
 	uint16_t x = 64;
-	uint16_t y = 70;
+	uint16_t y = 105;
 
 	// Two Bottom Spawning Enemies
 	uint16_t oldenemyx;
@@ -141,10 +150,6 @@ int main()
 	fillRectangle(0,0,128,65,RGBToWord(255,255,255));
 	initprbs(seed);
 	printDecimal(prbs());
-	//Section Below For Testing Collisions
-	//fillRectangle(0,140,20,5,RGBToWord(255,255,255));
-	//fillRectangle(64,140,20,5,RGBToWord(255,255,255));
-	//Section Above For Testing Collisions`
 	lvl1();
 	while(1)
 	{
@@ -288,24 +293,68 @@ int main()
 		if (isInside(enemyx,enemyy,20,5,x,y) || isInside(enemyx,enemyy,20,5,x+10,y) || isInside(enemyx,enemyy,20,5,x,y+9) || isInside(enemyx,enemyy,20,5,x+10,y+9)){
 			//Sets The Character Coords Back To Default
 			x = 64;
-			y = 70;
+			y = 105;
 			enemyx = 0;
 			enemyy = 150;
 			enemy2x = 64;
 			enemy2y = 150;
+			enemy3x = 0;
+			enemy3y = 65;
+			enemy4x = 64;
+			enemy4y = 65;
 			count = 0;
+			death();
 			InitialiseGame(levelCount);
 		}
 		else if (isInside(enemy2x,enemy2y,20,5,x,y) || isInside(enemy2x,enemy2y,20,5,x+10,y) || isInside(enemy2x,enemy2y,20,5,x,y+9) || isInside(enemy2x,enemy2y,20,5,x+10,y+9)){
 			//Sets The Character Coords Back To Default
 			x = 64;
-			y = 70;
+			y = 105;
 			enemyx = 0;
 			enemyy = 150;
 			enemy2x = 64;
 			enemy2y = 150;
+			enemy3x = 0;
+			enemy3y = 65;
+			enemy4x = 64;
+			enemy4y = 65;
 			count = 0;
+			death();
 			InitialiseGame(levelCount);
+		}
+		if (levelCount >= 2){
+			if (isInside(enemy3x,enemy3y,20,5,x,y) || isInside(enemy3x,enemy3y,20,5,x+10,y) || isInside(enemy3x,enemy3y,20,5,x,y+9) || isInside(enemy3x,enemy3y,20,5,x+10,y+9)){
+				//Sets The Character Coords Back To Default
+				x = 64;
+				y = 105;
+				enemyx = 0;
+				enemyy = 150;
+				enemy2x = 64;
+				enemy2y = 150;
+				enemy3x = 0;
+				enemy3y = 65;
+				enemy4x = 64;
+				enemy4y = 65;
+				count = 0;
+				death();
+				InitialiseGame(levelCount);
+			}
+			else if (isInside(enemy4x,enemy4y,20,5,x,y) || isInside(enemy4x,enemy4y,20,5,x+10,y) || isInside(enemy4x,enemy4y,20,5,x,y+9) || isInside(enemy4x,enemy4y,20,5,x+10,y+9)){
+				//Sets The Character Coords Back To Default
+				x = 64;
+				y = 105;
+				enemyx = 0;
+				enemyy = 150;
+				enemy2x = 64;
+				enemy2y = 150;
+				enemy3x = 0;
+				enemy3y = 65;
+				enemy4x = 64;
+				enemy4y = 65;
+				count = 0;
+				death();
+				InitialiseGame(levelCount);
+			}
 		}
 		delay(50);
 		if (isInside(hitboxx,hitboxy,20,5,x,y) || isInside(hitboxx,hitboxy,20,5,x+10,y) || isInside(hitboxx,hitboxy,20,5,x,y+9) || isInside(hitboxx,hitboxy,20,5,x+10,y+9)){
@@ -313,7 +362,15 @@ int main()
 			if (count >= 5){
 				levelCount += 1;
 				x = 64;
-				y = 70;
+				y = 105;
+				enemyx = 0;
+				enemyy = 150;
+				enemy2x = 64;
+				enemy2y = 150;
+				enemy3x = 0;
+				enemy3y = 65;
+				enemy4x = 64;
+				enemy4y = 65;
 				hitboxx = random(0,100);
 				hitboxy = random(65,140);
 				InitialiseGame(levelCount);
