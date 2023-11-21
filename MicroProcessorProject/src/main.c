@@ -19,6 +19,7 @@ void InitialiseGame(int);
 void lvl1(void);
 void lvl2(void);
 void lvl3(void);
+void completed(void);
 
 volatile uint32_t milliseconds;
 uint16_t count = 0;
@@ -93,6 +94,13 @@ void death()
 {
 	fillRectangle(0,0,128,159,RGBToWord(255,255,255));
 	printText("You Died...", 30,30,RGBToWord(255,0,0),RGBToWord(255,255,255));
+	delay(2000);	
+}
+
+void completed()
+{
+	fillRectangle(0,0,128,159,RGBToWord(255,255,255));
+	printText("You Beat The Level!", 30,30,RGBToWord(255,0,0),RGBToWord(255,255,255));
 	delay(2000);	
 }
 
@@ -341,6 +349,10 @@ int main()
 			enemy3y = 65;
 			enemy4x = 64;
 			enemy4y = 65;
+			enemy5x = 0;
+			enemy5y = random(65, 154);
+			enemy6x = 108;
+			enemy6y = random(65, 154);
 			count = 0;
 			death();
 			InitialiseGame(levelCount);
@@ -357,6 +369,10 @@ int main()
 			enemy3y = 65;
 			enemy4x = 64;
 			enemy4y = 65;
+			enemy5x = 0;
+			enemy5y = random(65, 154);
+			enemy6x = 108;
+			enemy6y = random(65, 154);
 			count = 0;
 			death();
 			InitialiseGame(levelCount);
@@ -374,6 +390,10 @@ int main()
 				enemy3y = 65;
 				enemy4x = 64;
 				enemy4y = 65;
+				enemy5x = 0;
+				enemy5y = random(65, 154);
+				enemy6x = 108;
+				enemy6y = random(65, 154);
 				count = 0;
 				death();
 				InitialiseGame(levelCount);
@@ -390,6 +410,10 @@ int main()
 				enemy3y = 65;
 				enemy4x = 64;
 				enemy4y = 65;
+				enemy5x = 0;
+				enemy5y = random(65, 154);
+				enemy6x = 108;
+				enemy6y = random(65, 154);
 				count = 0;
 				death();
 				InitialiseGame(levelCount);
@@ -412,6 +436,70 @@ int main()
 				enemy4y = 65;
 				hitboxx = random(0,100);
 				hitboxy = random(65,140);
+				completed();
+				InitialiseGame(levelCount);
+			}
+		}
+		if (levelCount >= 3){
+			if (isInside(enemy5x,enemy5y,20,5,x,y) || isInside(enemy5x,enemy5y,20,5,x+10,y) || isInside(enemy5x,enemy5y,20,5,x,y+9) || isInside(enemy5x,enemy5y,20,5,x+10,y+9)){
+				//Sets The Character Coords Back To Default
+				x = 64;
+				y = 105;
+				enemyx = 0;
+				enemyy = 150;
+				enemy2x = 64;
+				enemy2y = 150;
+				enemy3x = 0;
+				enemy3y = 65;
+				enemy4x = 64;
+				enemy4y = 65;
+				enemy5x = 0;
+				enemy5y = random(65, 154);
+				enemy6x = 108;
+				enemy6y = random(65, 154);
+				count = 0;
+				death();
+				InitialiseGame(levelCount);
+			}
+			else if (isInside(enemy6x,enemy6y,20,5,x,y) || isInside(enemy6x,enemy6y,20,5,x+10,y) || isInside(enemy6x,enemy6y,20,5,x,y+9) || isInside(enemy6x,enemy6y,20,5,x+10,y+9)){
+				//Sets The Character Coords Back To Default
+				x = 64;
+				y = 105;
+				enemyx = 0;
+				enemyy = 150;
+				enemy2x = 64;
+				enemy2y = 150;
+				enemy3x = 0;
+				enemy3y = 65;
+				enemy4x = 64;
+				enemy4y = 65;
+				enemy5x = 0;
+				enemy5y = random(65, 154);
+				enemy6x = 108;
+				enemy6y = random(65, 154);
+				count = 0;
+				death();
+				InitialiseGame(levelCount);
+			}
+		}
+		delay(50);
+		if (isInside(hitboxx,hitboxy,20,5,x,y) || isInside(hitboxx,hitboxy,20,5,x+10,y) || isInside(hitboxx,hitboxy,20,5,x,y+9) || isInside(hitboxx,hitboxy,20,5,x+10,y+9)){
+			// Checks if user is inside the yellow square
+			if (count >= 5){
+				levelCount += 1;
+				x = 64;
+				y = 105;
+				enemyx = 0;
+				enemyy = 150;
+				enemy2x = 64;
+				enemy2y = 150;
+				enemy3x = 0;
+				enemy3y = 65;
+				enemy4x = 64;
+				enemy4y = 65;
+				hitboxx = random(0,100);
+				hitboxy = random(65,140);
+				completed();
 				InitialiseGame(levelCount);
 			}
 		}
