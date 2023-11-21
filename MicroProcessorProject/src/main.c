@@ -124,6 +124,15 @@ int main()
 	uint16_t oldenemy3y;
 	uint16_t oldenemy4x;
 	uint16_t oldenemy4y;
+	// Two Side Spawning Enemies
+	uint16_t enemy5x = 0;
+	uint16_t enemy5y = random(65, 154);
+	uint16_t enemy6x = 108;
+	uint16_t enemy6y = random(65, 154);
+	uint16_t oldenemy5x;
+	uint16_t oldenemy5y;
+	uint16_t oldenemy6x;
+	uint16_t oldenemy6y;
 
 
 	uint16_t oldx = x;
@@ -146,7 +155,7 @@ int main()
 	}
 	//Sets Background To Black
 	fillRectangle(0,0,128,159,RGBToWord(0,0,0));
-	//Sets Barrier to Dimgrey
+	//Sets Barrier to White
 	fillRectangle(0,0,128,65,RGBToWord(255,255,255));
 	initprbs(seed);
 	printDecimal(prbs());
@@ -187,6 +196,21 @@ int main()
 			fillRectangle(enemy3x,enemy3y,20,5,RGBToWord(255,255,255));
 			}
 		}
+		if (levelCount >= 3){
+			if (enemy5x < 108){
+				oldenemy5x = enemy5x;
+				oldenemy5y = enemy5y;
+				enemy5x++;
+				fillRectangle(oldenemy5x,oldenemy5y,20,5,RGBToWord(0,0,0));
+				fillRectangle(enemy5x,enemy5y,20,5,RGBToWord(255,255,255));
+			}
+			else {
+			fillRectangle(enemy5x,enemy5y,20,5,RGBToWord(0,0,0));
+			enemy5x = 0;
+			enemy5y = random(65, 154);
+			fillRectangle(enemy5x,enemy5y,20,5,RGBToWord(255,255,255));
+			}
+		}
 		if (enemy2y > 65)
 		{
 			oldenemy2x = enemy2x;
@@ -219,6 +243,21 @@ int main()
 			enemy4x = random(64,108);
 			enemy4y = 65;
 			fillRectangle(enemy4x,enemy4y,20,5,RGBToWord(255,255,255));
+			}
+		}
+		if (levelCount >= 3){
+			if (enemy6x > 0){
+				oldenemy6x = enemy6x;
+				oldenemy6y = enemy6y;
+				enemy6x--;
+				fillRectangle(oldenemy6x,oldenemy6y,20,5,RGBToWord(0,0,0));
+				fillRectangle(enemy6x,enemy6y,20,5,RGBToWord(255,255,255));
+			}
+			else {
+			fillRectangle(enemy6x,enemy6y,20,5,RGBToWord(0,0,0));
+			enemy6x = 108;
+			enemy6y = random(65, 154);
+			fillRectangle(enemy6x,enemy6y,20,5,RGBToWord(255,255,255));
 			}
 		}
 		hmoved = vmoved = 0;
