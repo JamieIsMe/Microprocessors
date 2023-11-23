@@ -20,6 +20,7 @@ void lvl1(void);
 void lvl2(void);
 void lvl3(void);
 void completed(void);
+void end(void);
 
 volatile uint32_t milliseconds;
 uint16_t count = 0;
@@ -144,7 +145,57 @@ void completed()
 {
 	fillRectangle(0,0,128,159,RGBToWord(255,255,255));
 	printText("You Beat The Level",2,30,RGBToWord(0,255,0),RGBToWord(255,255,255));
-	delay(2000);	
+	delay(2000);
+}
+
+void end()
+{
+	//End Sequence Enemies
+	uint16_t enemy7x = 0;
+	uint16_t enemy7y = 65;
+	uint16_t enemy8x = 127;
+	uint16_t enemy8y = 65;
+	uint16_t oldenemy7x;
+	uint16_t oldenemy7y;
+	uint16_t oldenemy8x;
+	uint16_t oldenemy8y;
+
+	fillRectangle(0,0,128,159,RGBToWord(255,255,255));
+	printText("You Beat the Game!",2,30,RGBToWord(0,255,0),RGBToWord(255,255,255));
+	delay(3000);
+	printText("Wait...",35,70,RGBToWord(0,0,0),RGBToWord(255,255,255));
+	delay(2000);
+	printText("Not Yet!",35,70,RGBToWord(255,0,0),RGBToWord(255,255,255));
+	delay(2000);
+	fillRectangle(0,0,128,159,RGBToWord(0,0,0));
+	fillRectangle(0,0,128,65,RGBToWord(255,255,255));
+	putImage(40,10,41,40,angryFlowey,0,0);
+	putImage(65,90,10,9,heart,0,0);
+	printText("DIEEEEE!!!",40,55,RGBToWord(255,0,0),RGBToWord(255,255,255));
+	while (enemy7x < 45){
+		oldenemy7x = enemy7x;
+		oldenemy7y = enemy7y;
+		enemy7x = enemy7x + 1;
+		fillRectangle(oldenemy7x,oldenemy7y,10,90,RGBToWord(0,0,0));
+		fillRectangle(enemy7x,enemy7y,10,90,RGBToWord(255,255,255));
+		delay(50);
+		oldenemy8x = enemy8x;
+		oldenemy8y = enemy8y;
+		enemy8x = enemy8x - 1;
+		fillRectangle(oldenemy8x,oldenemy8y,10,90,RGBToWord(0,0,0));
+		fillRectangle(enemy8x,enemy8y,10,90,RGBToWord(255,255,255));
+		delay(50);
+	}
+	delay(2000);
+	fillRectangle(0,0,128,159,RGBToWord(255,255,255));
+	printText("You Know What?",15,70,RGBToWord(0,0,0),RGBToWord(255,255,255));
+	delay(2000);
+	printText("You Win",35,90,RGBToWord(0,255,0),RGBToWord(255,255,255));
+	delay(2500);
+	printText("Goodbye",35,90,RGBToWord(0,0,0),RGBToWord(255,255,255));
+	delay(3000);
+	int levelCount = 1;
+	InitialiseGame(levelCount);
 }
 
 int main()
@@ -185,7 +236,6 @@ int main()
 	uint16_t oldenemy6x;
 	uint16_t oldenemy6y;
 
-
 	uint16_t oldx = x;
 	uint16_t oldy = y;
 	uint16_t hitboxx = random(0,100);
@@ -218,7 +268,7 @@ int main()
 		{
 			oldenemyx = enemyx;
 			oldenemyy = enemyy;
-			enemyy = enemyy - 2;
+			enemyy = enemyy - 1;
 			fillRectangle(oldenemyx,oldenemyy,20,5,RGBToWord(0,0,0));
 			fillRectangle(enemyx,enemyy,20,5,RGBToWord(255,255,255));
 		}
@@ -237,7 +287,7 @@ int main()
 			if (enemy3y < 159){
 				oldenemy3x = enemy3x;
 				oldenemy3y = enemy3y;
-				enemy3y = enemy3y + 2;
+				enemy3y = enemy3y + 1;
 				fillRectangle(oldenemy3x,oldenemy3y,20,5,RGBToWord(0,0,0));
 				fillRectangle(enemy3x,enemy3y,20,5,RGBToWord(255,255,255));
 			}
@@ -252,7 +302,7 @@ int main()
 			if (enemy5x < 108){
 				oldenemy5x = enemy5x;
 				oldenemy5y = enemy5y;
-				enemy5x = enemy5x + 2;
+				enemy5x = enemy5x + 1;
 				fillRectangle(oldenemy5x,oldenemy5y,20,5,RGBToWord(0,0,0));
 				fillRectangle(enemy5x,enemy5y,20,5,RGBToWord(255,255,255));
 			}
@@ -267,7 +317,7 @@ int main()
 		{
 			oldenemy2x = enemy2x;
 			oldenemy2y = enemy2y;
-			enemy2y = enemy2y - 2;
+			enemy2y = enemy2y - 1;
 			fillRectangle(oldenemy2x,oldenemy2y,20,5,RGBToWord(0,0,0));
 			fillRectangle(enemy2x,enemy2y,20,5,RGBToWord(255,255,255));
 			if (count == 5)
@@ -286,7 +336,7 @@ int main()
 			if (enemy4y < 159){
 				oldenemy4x = enemy4x;
 				oldenemy4y = enemy4y;
-				enemy4y = enemy4y + 2;
+				enemy4y = enemy4y + 1;
 				fillRectangle(oldenemy4x,oldenemy4y,20,5,RGBToWord(0,0,0));
 				fillRectangle(enemy4x,enemy4y,20,5,RGBToWord(255,255,255));
 			}
@@ -301,7 +351,7 @@ int main()
 			if (enemy6x > 0){
 				oldenemy6x = enemy6x;
 				oldenemy6y = enemy6y;
-				enemy6x = enemy6x - 2;
+				enemy6x = enemy6x - 1;
 				fillRectangle(oldenemy6x,oldenemy6y,20,5,RGBToWord(0,0,0));
 				fillRectangle(enemy6x,enemy6y,20,5,RGBToWord(255,255,255));
 			}
@@ -499,6 +549,10 @@ int main()
 		if (isInside(hitboxx,hitboxy,20,5,x,y) || isInside(hitboxx,hitboxy,20,5,x+10,y) || isInside(hitboxx,hitboxy,20,5,x,y+9) || isInside(hitboxx,hitboxy,20,5,x+10,y+9)){
 			// Checks if user is inside the yellow square
 			if (count >= 5){
+				if (levelCount == 3)
+				{
+					end();
+				}
 				levelCount += 1;
 				x = 64;
 				y = 105;
@@ -559,26 +613,6 @@ int main()
 			}
 		}
 		delay(50);
-		if (isInside(hitboxx,hitboxy,20,5,x,y) || isInside(hitboxx,hitboxy,20,5,x+10,y) || isInside(hitboxx,hitboxy,20,5,x,y+9) || isInside(hitboxx,hitboxy,20,5,x+10,y+9)){
-			// Checks if user is inside the yellow square
-			if (count >= 5){
-				levelCount += 1;
-				x = 64;
-				y = 105;
-				enemyx = 0;
-				enemyy = 150;
-				enemy2x = 64;
-				enemy2y = 150;
-				enemy3x = 0;
-				enemy3y = 65;
-				enemy4x = 64;
-				enemy4y = 65;
-				hitboxx = random(0,100);
-				hitboxy = random(65,140);
-				completed();
-				InitialiseGame(levelCount);
-			}
-		}
 	}
 	return 0;
 }
