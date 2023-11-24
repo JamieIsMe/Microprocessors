@@ -178,13 +178,13 @@ void end()
 		enemy7x = enemy7x + 1;
 		fillRectangle(oldenemy7x,oldenemy7y,10,90,RGBToWord(0,0,0));
 		fillRectangle(enemy7x,enemy7y,10,90,RGBToWord(255,255,255));
-		delay(50);
+		delay(100);
 		oldenemy8x = enemy8x;
 		oldenemy8y = enemy8y;
 		enemy8x = enemy8x - 1;
 		fillRectangle(oldenemy8x,oldenemy8y,10,90,RGBToWord(0,0,0));
 		fillRectangle(enemy8x,enemy8y,10,90,RGBToWord(255,255,255));
-		delay(50);
+		delay(100);
 	}
 	delay(2000);
 	fillRectangle(0,0,128,159,RGBToWord(255,255,255));
@@ -302,7 +302,7 @@ int main()
 			if (enemy5x < 108){
 				oldenemy5x = enemy5x;
 				oldenemy5y = enemy5y;
-				enemy5x = enemy5x + 1;
+				enemy5x = enemy5x + 2;
 				fillRectangle(oldenemy5x,oldenemy5y,20,5,RGBToWord(0,0,0));
 				fillRectangle(enemy5x,enemy5y,20,5,RGBToWord(255,255,255));
 			}
@@ -351,7 +351,7 @@ int main()
 			if (enemy6x > 0){
 				oldenemy6x = enemy6x;
 				oldenemy6y = enemy6y;
-				enemy6x = enemy6x - 1;
+				enemy6x = enemy6x - 2;
 				fillRectangle(oldenemy6x,oldenemy6y,20,5,RGBToWord(0,0,0));
 				fillRectangle(enemy6x,enemy6y,20,5,RGBToWord(255,255,255));
 			}
