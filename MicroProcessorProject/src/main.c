@@ -3,6 +3,8 @@
 #include "serial.h"
 #include "prbs.h"
 #include "sound.h"
+
+// Initialisation of global variables
 void initClock(void);
 void initSysTick(void);
 void SysTick_Handler(void);
@@ -37,6 +39,8 @@ void loop(){
 	}
 };
 */
+
+// Creation of all images used in program
 const uint16_t title[]=
 {
 	65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,0,0,0,0,0,0,65535,65535,65535,65535,65535,0,0,65535,65535,65535,65535,65535,65535,65535,65535,65535,0,0,65535,65535,65535,0,0,0,0,0,0,0,65535,0,0,0,0,0,0,0,0,0,65535,65535,65535,0,0,0,0,0,0,0,0,0,0,0,65535,65535,65535,65535,0,0,0,0,65535,65535,65535,65535,65535,0,0,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,0,0,0,0,0,0,0,65535,65535,65535,65535,65535,0,0,0,0,0,0,0,0,65535,65535,65535,65535,0,0,65535,65535,65535,65535,65535,65535,65535,65535,65535,0,0,65535,65535,0,0,0,0,0,0,65535,65535,65535,0,0,0,0,0,0,0,0,0,0,65535,65535,0,0,65535,65535,65535,65535,65535,65535,65535,0,0,65535,65535,65535,0,0,0,0,0,0,65535,65535,65535,65535,0,65535,0,65535,65535,65535,65535,65535,65535,65535,65535,65535,0,0,0,0,0,0,65535,65535,65535,65535,65535,65535,0,0,0,65535,65535,65535,65535,0,0,0,65535,65535,65535,0,0,65535,65535,65535,65535,65535,65535,65535,65535,65535,0,0,65535,0,0,0,0,65535,65535,65535,65535,65535,65535,0,65535,0,65535,65535,65535,65535,0,0,0,0,65535,65535,0,0,0,0,0,0,0,0,0,65535,65535,65535,65535,0,0,65535,65535,0,0,65535,65535,65535,65535,0,65535,0,65535,65535,65535,65535,65535,65535,65535,65535,0,0,0,0,65535,65535,65535,65535,65535,65535,65535,65535,0,0,0,65535,65535,65535,65535,65535,65535,0,0,0,65535,65535,0,0,65535,65535,65535,65535,65535,65535,65535,65535,65535,0,0,65535,0,0,0,65535,65535,65535,65535,65535,65535,65535,0,65535,0,65535,65535,65535,65535,65535,65535,0,0,65535,65535,65535,65535,65535,0,65535,0,65535,65535,65535,65535,65535,65535,65535,0,0,65535,65535,0,0,65535,65535,65535,65535,0,65535,0,65535,65535,65535,65535,65535,65535,65535,65535,0,0,0,65535,65535,65535,65535,65535,65535,65535,65535,65535,0,0,65535,65535,65535,65535,65535,65535,65535,65535,0,0,65535,65535,0,0,0,65535,65535,65535,65535,65535,65535,65535,0,0,0,65535,0,0,65535,65535,65535,65535,65535,65535,65535,65535,0,65535,0,65535,65535,65535,65535,65535,65535,0,0,65535,65535,65535,65535,65535,0,65535,0,65535,65535,65535,65535,65535,65535,0,0,0,65535,65535,0,0,65535,65535,65535,65535,0,65535,0,65535,65535,65535,65535,65535,65535,65535,65535,0,0,65535,65535,65535,65535,65535,65535,65535,65535,65535,0,0,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,0,0,65535,65535,0,0,65535,65535,65535,65535,65535,65535,65535,0,0,65535,65535,0,0,65535,65535,65535,65535,65535,65535,65535,65535,0,65535,0,65535,65535,65535,65535,65535,65535,0,0,65535,65535,65535,65535,65535,0,65535,0,65535,65535,65535,65535,65535,65535,0,0,0,65535,65535,0,0,0,65535,65535,65535,0,65535,0,65535,65535,65535,65535,65535,65535,65535,65535,0,0,65535,65535,65535,65535,65535,65535,65535,65535,65535,0,0,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,0,0,65535,65535,0,0,65535,65535,65535,65535,65535,65535,65535,0,0,65535,65535,0,0,65535,65535,65535,65535,65535,65535,65535,65535,0,65535,0,65535,65535,65535,65535,0,0,0,0,65535,65535,65535,65535,65535,0,65535,0,65535,65535,65535,65535,65535,65535,0,0,65535,65535,65535,65535,0,0,65535,65535,65535,0,65535,0,65535,65535,65535,65535,65535,65535,65535,65535,0,0,65535,65535,65535,65535,65535,65535,65535,65535,65535,0,0,65535,65535,65535,65535,7936,65535,7936,65535,65535,65535,0,0,65535,65535,0,0,65535,65535,65535,65535,65535,65535,65535,0,0,65535,65535,0,0,65535,65535,65535,65535,65535,65535,65535,65535,0,65535,0,0,0,0,0,0,0,0,65535,65535,65535,65535,65535,65535,0,65535,0,65535,65535,65535,65535,65535,65535,0,0,65535,65535,65535,65535,0,0,65535,65535,65535,0,65535,0,65535,65535,65535,65535,65535,65535,65535,65535,0,0,65535,65535,65535,65535,65535,65535,65535,65535,65535,0,0,65535,65535,65535,7936,7936,7936,7936,7936,65535,65535,0,0,65535,65535,0,0,65535,65535,65535,65535,65535,65535,65535,0,0,65535,65535,0,0,0,0,0,0,0,0,0,65535,0,65535,0,0,0,0,0,0,0,65535,65535,65535,65535,65535,65535,65535,0,65535,0,65535,65535,65535,65535,65535,65535,0,0,65535,65535,65535,65535,0,0,65535,65535,65535,0,65535,0,65535,65535,65535,65535,65535,65535,65535,65535,0,0,0,0,0,0,0,0,0,65535,65535,0,0,65535,65535,65535,7936,7936,7936,7936,7936,65535,65535,0,0,65535,65535,0,0,65535,65535,65535,65535,65535,65535,65535,0,0,65535,65535,0,0,0,0,0,0,0,0,65535,65535,0,65535,0,0,0,0,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,0,65535,0,65535,65535,65535,65535,65535,65535,0,0,65535,65535,65535,65535,0,0,0,65535,65535,0,65535,0,65535,65535,65535,65535,65535,65535,65535,65535,0,0,0,0,0,0,0,0,65535,65535,65535,0,0,65535,65535,65535,7936,7936,7936,7936,7936,65535,65535,0,0,65535,65535,0,0,0,65535,65535,65535,65535,65535,0,0,0,65535,65535,0,0,65535,65535,65535,65535,65535,65535,65535,65535,0,65535,0,65535,0,0,0,0,65535,65535,65535,65535,65535,65535,65535,65535,0,65535,0,65535,65535,65535,0,0,0,0,0,0,0,0,0,0,0,0,65535,65535,0,65535,0,65535,65535,65535,65535,65535,65535,65535,65535,0,0,65535,65535,65535,65535,65535,65535,65535,65535,65535,0,0,65535,65535,65535,65535,7936,7936,7936,65535,65535,65535,0,0,65535,65535,65535,0,0,65535,65535,65535,65535,65535,0,0,65535,65535,65535,0,0,65535,65535,65535,65535,65535,65535,65535,65535,0,65535,0,65535,65535,0,0,0,0,65535,65535,65535,65535,65535,65535,65535,0,65535,0,65535,65535,65535,65535,0,0,0,0,0,0,0,0,0,0,0,65535,65535,0,65535,0,65535,65535,65535,65535,65535,65535,65535,65535,0,0,65535,65535,65535,65535,65535,65535,65535,65535,65535,0,0,65535,65535,65535,65535,65535,7936,65535,65535,65535,65535,0,0,65535,65535,65535,0,0,0,65535,65535,65535,0,0,0,65535,65535,65535,0,0,65535,65535,65535,65535,65535,65535,65535,65535,0,65535,0,65535,65535,65535,65535,0,0,0,65535,65535,65535,65535,65535,65535,0,65535,0,65535,65535,65535,65535,65535,0,0,65535,65535,65535,65535,65535,65535,0,0,65535,65535,0,65535,0,65535,65535,65535,65535,65535,65535,65535,65535,0,0,65535,65535,65535,65535,65535,65535,65535,65535,65535,0,0,0,65535,65535,65535,65535,65535,65535,65535,65535,0,0,0,65535,65535,65535,65535,0,0,65535,65535,65535,0,0,65535,65535,65535,65535,0,0,65535,65535,65535,65535,65535,65535,65535,65535,0,65535,0,65535,65535,65535,65535,65535,0,0,0,65535,65535,65535,65535,65535,0,65535,0,65535,65535,65535,65535,65535,0,0,65535,65535,65535,65535,65535,65535,0,0,0,65535,0,65535,0,65535,65535,65535,65535,65535,65535,65535,65535,0,0,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,0,0,65535,65535,65535,65535,65535,65535,65535,65535,0,0,65535,65535,65535,65535,65535,0,0,65535,65535,65535,0,0,65535,65535,65535,65535,0,0,65535,65535,65535,65535,65535,65535,65535,65535,0,65535,0,65535,65535,65535,65535,65535,0,0,0,65535,65535,65535,65535,65535,0,65535,0,65535,65535,65535,65535,0,0,0,65535,65535,65535,65535,65535,65535,65535,0,0,65535,0,65535,0,65535,65535,65535,65535,65535,65535,65535,65535,0,0,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,0,0,0,65535,65535,65535,65535,65535,65535,0,0,0,65535,65535,65535,65535,65535,0,0,65535,65535,65535,0,0,65535,65535,65535,65535,0,0,0,65535,65535,65535,65535,65535,65535,65535,0,65535,0,65535,65535,65535,65535,65535,65535,0,0,65535,65535,65535,65535,65535,0,65535,0,65535,65535,65535,65535,0,0,65535,65535,65535,65535,65535,65535,65535,65535,0,0,65535,0,65535,0,65535,65535,65535,65535,65535,65535,65535,65535,0,0,0,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,0,0,0,65535,65535,65535,65535,0,0,0,65535,65535,65535,65535,65535,65535,65535,0,0,65535,0,0,65535,65535,65535,65535,65535,0,0,0,0,65535,65535,65535,65535,65535,65535,0,65535,0,65535,65535,65535,65535,65535,65535,0,0,65535,65535,65535,65535,65535,0,65535,0,65535,65535,65535,65535,0,0,65535,65535,65535,65535,65535,65535,65535,65535,0,0,65535,0,65535,0,0,0,0,0,0,0,0,65535,0,0,0,0,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,0,0,0,0,0,0,0,0,65535,65535,65535,65535,65535,65535,65535,65535,0,0,0,0,0,65535,65535,65535,65535,65535,65535,0,0,0,0,0,0,65535,65535,65535,0,65535,0,65535,65535,65535,65535,65535,65535,0,0,65535,65535,65535,65535,65535,65535,0,0,65535,65535,65535,65535,0,0,65535,65535,65535,65535,65535,65535,65535,65535,0,0,65535,0,0,0,0,0,0,0,0,0,0,65535,65535,0,0,0,0,0,0,65535,65535,65535,65535,65535,65535,65535,65535,0,0,0,0,0,0,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,0,0,0,65535,65535,65535,65535,65535,65535,65535,65535,0,0,0,0,0,0,0,65535,0,0,0,65535,65535,65535,65535,65535,65535,0,0,65535,65535,65535,65535,65535,65535,0,0,65535,65535,65535,65535,0,0,65535,65535,65535,65535,65535,65535,65535,65535,0,0,65535,65535,0,0,0,0,0,0,0,65535,65535,65535,65535,65535,0,0,0,0,0,0,0,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,
@@ -81,67 +85,103 @@ const uint16_t angryFlowey[]=
 	65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,0,0,0,0,0,65535,65535,65535,65535,0,0,0,0,0,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,0,0,0,0,65535,0,65535,65535,0,65535,65535,0,65535,0,0,0,65535,0,0,0,0,0,0,0,0,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,0,0,65535,65535,65535,0,65535,65535,65535,0,0,65535,0,0,0,65535,65535,65535,0,65535,65535,0,0,65535,65535,65535,0,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,0,65535,65535,65535,65535,65535,65535,0,65535,65535,65535,0,65535,0,65535,65535,65535,65535,0,65535,65535,65535,0,65535,65535,65535,65535,65535,0,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,0,65535,65535,65535,65535,65535,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,65535,65535,65535,0,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,0,0,0,0,0,0,65535,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,65535,65535,65535,65535,65535,65535,65535,0,65535,65535,65535,65535,65535,65535,0,0,0,0,0,0,0,40224,40224,0,0,0,0,0,40224,40224,0,0,0,0,0,0,0,0,65535,65535,65535,0,65535,65535,65535,65535,65535,0,65535,65535,65535,65535,65535,65535,65535,65535,0,0,0,0,0,0,40224,40224,0,0,0,0,0,40224,40224,0,0,0,0,0,0,65535,65535,65535,65535,65535,0,0,65535,65535,65535,0,65535,65535,65535,65535,65535,65535,65535,65535,65535,0,0,0,0,0,0,40224,40224,0,0,0,0,0,40224,40224,0,0,0,0,0,0,65535,65535,65535,65535,65535,65535,0,0,65535,0,65535,65535,65535,65535,0,0,0,0,0,0,0,0,0,0,0,0,40224,40224,0,0,0,0,0,40224,40224,0,0,0,0,0,0,0,0,0,0,0,65535,65535,0,65535,0,65535,65535,65535,65535,65535,65535,65535,65535,65535,0,0,0,0,0,0,0,40224,40224,0,0,0,0,0,40224,40224,0,0,0,0,0,0,0,65535,65535,65535,65535,65535,65535,65535,65535,0,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,0,0,0,0,0,0,40224,40224,0,0,0,0,0,40224,40224,0,0,0,0,0,0,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,0,0,65535,65535,65535,65535,65535,65535,65535,65535,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,0,65535,65535,65535,65535,65535,65535,65535,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,65535,65535,65535,65535,65535,65535,0,0,65535,65535,65535,65535,65535,0,65535,65535,65535,65535,65535,65535,65535,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,65535,65535,65535,65535,65535,0,0,65535,65535,65535,65535,65535,65535,65535,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,65535,65535,65535,65535,65535,0,0,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,0,0,0,65535,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,0,0,65535,65535,65535,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,0,65535,65535,65535,65535,0,65535,65535,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,65535,65535,65535,0,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,0,65535,65535,65535,65535,0,65535,65535,65535,65535,65535,65535,65535,65535,65535,0,65535,65535,65535,65535,65535,65535,65535,65535,65535,0,65535,65535,65535,0,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,0,65535,65535,65535,65535,0,65535,65535,65535,65535,65535,65535,65535,65535,65535,0,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,0,65535,65535,65535,0,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,0,65535,65535,65535,65535,0,65535,65535,65535,65535,65535,65535,65535,65535,65535,0,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,0,65535,65535,65535,0,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,0,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,0,0,0,0,0,0,0,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,0,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,0,0,65535,65535,65535,65535,65535,65535,0,0,0,65535,65535,0,0,0,0,0,0,0,0,0,65535,65535,65535,65535,65535,0,0,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,0,0,0,0,0,0,65535,65535,65535,65535,65535,0,0,0,0,0,65535,65535,65535,65535,0,0,0,0,0,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,0,65535,65535,65535,0,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,0,65535,65535,65535,65535,0,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,0,65535,65535,65535,0,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,0,65535,65535,65535,0,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,0,65535,65535,65535,0,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,0,65535,65535,65535,0,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,0,65535,65535,65535,0,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,0,65535,65535,65535,65535,0,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,0,65535,65535,65535,65535,0,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,0,65535,65535,65535,0,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,0,65535,65535,65535,0,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,0,65535,65535,65535,0,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,0,0,65535,65535,65535,0,65535,65535,65535,0,65535,65535,65535,65535,65535,0,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,0,0,65535,65535,0,65535,65535,65535,0,65535,65535,65535,65535,0,0,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,0,0,65535,65535,0,65535,65535,65535,0,65535,65535,0,0,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,0,0,0,0,0,0,0,0,0,0,0,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,65535,
 };
 
+// Function to initialize the game
 void InitialiseGame(int levelCount){
-	fillRectangle(0,0,128,159,RGBToWord(255,255,255));
-	putImage(15,30,97,21,title,0,0);
-	printText("Press Left", 30,70,RGBToWord(0,0,0),RGBToWord(255,255,255));
-	printText(" To Start", 30,85,RGBToWord(0,0,0),RGBToWord(255,255,255));
-	uint32_t seed = 0;
-	while (!leftPressed() || seed == 0){
-		seed++;
-	}
-	count = 0;
-	//Sets Background To Black
-	fillRectangle(0,0,128,159,RGBToWord(0,0,0));
-	putImage(45,20,41,42,flowey,0,0);
-	initprbs(seed);
-	printDecimal(prbs());
-	//Section Below For Testing Collisions
-	//Sets Barrier to Dimgrey
-	fillRectangle(0,0,128,65,RGBToWord(255,255,255));
-	if (levelCount == 1){
-		lvl1();
-	}
-	else if (levelCount == 2){
-		lvl2();
-	}
-	else if (levelCount == 3){
-		lvl3();
-	}
+    // Set the initial screen to white
+    fillRectangle(0,0,128,159,RGBToWord(255,255,255));
+    // Display the game title image
+    putImage(15,30,97,21,title,0,0);
+    // Display instructions to start the game
+    printText("Press Left", 30,70,RGBToWord(0,0,0),RGBToWord(255,255,255));
+    printText(" To Start", 30,85,RGBToWord(0,0,0),RGBToWord(255,255,255));
+
+    // Wait for the Left button to be pressed to start the game
+    uint32_t seed = 0;
+    while (!leftPressed() || seed == 0){
+        seed++;
+    }
+
+    // Initialize count variable and set the background to black
+    count = 0;
+    fillRectangle(0,0,128,159,RGBToWord(0,0,0));
+
+    // Display an image at specific coordinates
+    putImage(45,20,41,42,flowey,0,0);
+
+    // Initialize a pseudo-random number generator with the obtained seed
+    initprbs(seed);
+
+    // Print the generated pseudo-random number
+    printDecimal(prbs());
+
+    // Section below is for testing collisions
+
+    // Set a barrier color to Dimgrey
+    fillRectangle(0,0,128,65,RGBToWord(255,255,255));
+
+    // Check the level count and call the appropriate level function
+    if (levelCount == 1){
+        lvl1();
+    }
+    else if (levelCount == 2){
+        lvl2();
+    }
+    else if (levelCount == 3){
+        lvl3();
+    }
 }
 
+// Function for Level 1
 void lvl1()
 {
-	printText("Oh... a", 60,20,RGBToWord(0,255,0),RGBToWord(255,255,255));
-	printText("fresh soul", 60,30,RGBToWord(0,255,0),RGBToWord(255,255,255));
-	putImage(10,20,41,42,flowey,0,0);
+    // Display introductory text in green color
+    printText("Oh... a", 60,20,RGBToWord(0,255,0),RGBToWord(255,255,255));
+    printText("fresh soul", 60,30,RGBToWord(0,255,0),RGBToWord(255,255,255));
+    
+    // Display an image (e.g., flowey) at specific coordinates
+    putImage(10,20,41,42,flowey,0,0);
 }
 
-void lvl2(){
-	printText("Ouch..", 60,20,RGBToWord(255,165,0),RGBToWord(255,255,255));
-	printText("that hurts", 60,30,RGBToWord(255,165,0),RGBToWord(255,255,255));
+// Function for Level 2
+void lvl2()
+{
+    // Display text indicating pain in orange color
+    printText("Ouch..", 60,20,RGBToWord(255,165,0),RGBToWord(255,255,255));
+    printText("that hurts", 60,30,RGBToWord(255,165,0),RGBToWord(255,255,255));
 }
 
-void lvl3(){
-	printText("Thats it.", 60,20,RGBToWord(255,0,0),RGBToWord(255,255,255));
-	printText("DIE!", 60,30,RGBToWord(255,0,0),RGBToWord(255,255,255));
+// Function for Level 3
+void lvl3()
+{
+    // Display aggressive text in red color
+    printText("Thats it.", 60,20,RGBToWord(255,0,0),RGBToWord(255,255,255));
+    printText("DIE!", 60,30,RGBToWord(255,0,0),RGBToWord(255,255,255));
 }
 
+// Function to handle player death
 void death()
 {
-	fillRectangle(0,0,128,159,RGBToWord(255,255,255));
-	putImage(59,75,10,9,deathHeart,0,0);
-	delay(500);
-	putImage(59,75,10,9,deathHeart2,0,0);
-	delay(500);
-	putImage(59,75,10,9,deathHeart3,0,0);
-	delay(500);
-	putImage(59,75,10,9,deathHeart4,0,0);
-	delay(500);
-	printText("You Died...", 30,30,RGBToWord(255,0,0),RGBToWord(255,255,255));
-	delay(2000);	
+    // Set the entire screen to white
+    fillRectangle(0,0,128,159,RGBToWord(255,255,255));
+
+    // Display a sequence of images representing a death heart animation
+    putImage(59,75,10,9,deathHeart,0,0);
+    delay(500);
+    putImage(59,75,10,9,deathHeart2,0,0);
+    delay(500);
+    putImage(59,75,10,9,deathHeart3,0,0);
+    delay(500);
+    putImage(59,75,10,9,deathHeart4,0,0);
+    delay(500);
+
+    // Display text indicating player death in red color
+    printText("You Died...", 30,30,RGBToWord(255,0,0),RGBToWord(255,255,255));
+
+    // Pause for a brief period to allow the player to see the death message
+    delay(2000);
 }
 
+// Function to show message when you complete a level
 void completed()
 {
 	fillRectangle(0,0,128,159,RGBToWord(255,255,255));
@@ -149,82 +189,99 @@ void completed()
 	delay(2000);
 }
 
+// Function to handle the end sequence of the game
 void end()
 {
-	//End Sequence Enemies
-	uint16_t enemy7x = 0;
-	uint16_t enemy7y = 65;
-	uint16_t enemy8x = 127;
-	uint16_t enemy8y = 65;
-	uint16_t oldenemy7x;
-	uint16_t oldenemy7y;
-	uint16_t oldenemy8x;
-	uint16_t oldenemy8y;
+    // Declare variables for enemy positions and their previous positions
+    uint16_t enemy7x = 0;
+    uint16_t enemy7y = 65;
+    uint16_t enemy8x = 127;
+    uint16_t enemy8y = 65;
+    uint16_t oldenemy7x;
+    uint16_t oldenemy7y;
+    uint16_t oldenemy8x;
+    uint16_t oldenemy8y;
 
-	fillRectangle(0,0,128,159,RGBToWord(255,255,255));
-	printText("You Beat the Game!",2,30,RGBToWord(0,255,0),RGBToWord(255,255,255));
-	delay(3000);
-	printText("Wait...",35,70,RGBToWord(0,0,0),RGBToWord(255,255,255));
-	delay(2000);
-	printText("Not Yet!",35,70,RGBToWord(255,0,0),RGBToWord(255,255,255));
-	delay(2000);
-	fillRectangle(0,0,128,159,RGBToWord(0,0,0));
-	fillRectangle(0,0,128,65,RGBToWord(255,255,255));
-	putImage(40,10,41,40,angryFlowey,0,0);
-	putImage(65,90,10,9,heart,0,0);
-	printText("DIEEEEE!!!",40,55,RGBToWord(255,0,0),RGBToWord(255,255,255));
-	while (enemy7x < 45){
-		oldenemy7x = enemy7x;
-		oldenemy7y = enemy7y;
-		enemy7x = enemy7x + 1;
-		fillRectangle(oldenemy7x,oldenemy7y,10,90,RGBToWord(0,0,0));
-		fillRectangle(enemy7x,enemy7y,10,90,RGBToWord(255,255,255));
-		delay(100);
-		oldenemy8x = enemy8x;
-		oldenemy8y = enemy8y;
-		enemy8x = enemy8x - 1;
-		fillRectangle(oldenemy8x,oldenemy8y,10,90,RGBToWord(0,0,0));
-		fillRectangle(enemy8x,enemy8y,10,90,RGBToWord(255,255,255));
-		delay(100);
-	}
-	delay(2000);
-	fillRectangle(0,0,128,159,RGBToWord(255,255,255));
-	printText("You Know What?",15,70,RGBToWord(0,0,0),RGBToWord(255,255,255));
-	delay(2000);
-	printText("You Win",35,90,RGBToWord(0,255,0),RGBToWord(255,255,255));
-	delay(2500);
-	printText("Goodbye",35,90,RGBToWord(0,0,0),RGBToWord(255,255,255));
-	delay(3000);
-	fillRectangle(0,0,128,159,RGBToWord(255,255,255));
-	printText("You Beat",35,70,RGBToWord(0,255,0),RGBToWord(255,255,255));
-	printText("The Game!",33,90,RGBToWord(0,255,0),RGBToWord(255,255,255));
-	delay(3000);
-	levelCount = 1;
+    // Display a victory message and wait for a few seconds
+    fillRectangle(0,0,128,159,RGBToWord(255,255,255));
+    printText("You Beat the Game!",2,30,RGBToWord(0,255,0),RGBToWord(255,255,255));
+    delay(3000);
 
-	fillRectangle(0,0,128,159,RGBToWord(255,255,255));
-	putImage(15,30,97,21,title,0,0);
-	printText("Press Right", 30,70,RGBToWord(0,0,0),RGBToWord(255,255,255));
-	printText("To Restart", 31,85,RGBToWord(0,0,0),RGBToWord(255,255,255));
-	uint32_t seed = 0;
-	while (!leftPressed() || seed == 0){
-		seed++;
-	}
-	count = 0;
-	//Sets Background To Black
-	fillRectangle(0,0,128,159,RGBToWord(0,0,0));
-	putImage(45,20,41,42,flowey,0,0);
-	initprbs(seed);
-	printDecimal(prbs());
-	//Section Below For Testing Collisions
-	//Sets Barrier to Dimgrey
-	fillRectangle(0,0,128,65,RGBToWord(255,255,255));
-	if (levelCount == 1){
-		lvl1();
-	}
+    // Display additional messages to create a dramatic effect
+    printText("Wait...",35,70,RGBToWord(0,0,0),RGBToWord(255,255,255));
+    delay(2000);
+    printText("Not Yet!",35,70,RGBToWord(255,0,0),RGBToWord(255,255,255));
+    delay(2000);
+
+    // Set the background to black and display an angry Flowey image and a heart image
+    fillRectangle(0,0,128,159,RGBToWord(0,0,0));
+    fillRectangle(0,0,128,65,RGBToWord(255,255,255));
+    putImage(40,10,41,40,angryFlowey,0,0);
+    putImage(65,90,10,9,heart,0,0);
+
+    // Display an aggressive message
+    printText("DIEEEEE!!!",40,55,RGBToWord(255,0,0),RGBToWord(255,255,255));
+
+    // Animate the movement of two enemies towards each other
+    while (enemy7x < 45){
+        oldenemy7x = enemy7x;
+        oldenemy7y = enemy7y;
+        enemy7x = enemy7x + 1;
+        fillRectangle(oldenemy7x,oldenemy7y,10,90,RGBToWord(0,0,0));
+        fillRectangle(enemy7x,enemy7y,10,90,RGBToWord(255,255,255));
+        delay(100);
+        oldenemy8x = enemy8x;
+        oldenemy8y = enemy8y;
+        enemy8x = enemy8x - 1;
+        fillRectangle(oldenemy8x,oldenemy8y,10,90,RGBToWord(0,0,0));
+        fillRectangle(enemy8x,enemy8y,10,90,RGBToWord(255,255,255));
+        delay(100);
+    }
+
+    // Wait for a moment and display additional messages
+    delay(2000);
+    fillRectangle(0,0,128,159,RGBToWord(255,255,255));
+    printText("You Know What?",15,70,RGBToWord(0,0,0),RGBToWord(255,255,255));
+    delay(2000);
+    printText("You Win",35,90,RGBToWord(0,255,0),RGBToWord(255,255,255));
+    delay(2500);
+    printText("Goodbye",35,90,RGBToWord(0,0,0),RGBToWord(255,255,255));
+    delay(3000);
+
+    // Display a final victory message and reset the level count for a potential restart
+    fillRectangle(0,0,128,159,RGBToWord(255,255,255));
+    printText("You Beat",35,70,RGBToWord(0,255,0),RGBToWord(255,255,255));
+    printText("The Game!",33,90,RGBToWord(0,255,0),RGBToWord(255,255,255));
+    delay(3000);
+    levelCount = 1;
+
+    // Display instructions for restarting the game and wait for the Right button to be pressed
+    fillRectangle(0,0,128,159,RGBToWord(255,255,255));
+    putImage(15,30,97,21,title,0,0);
+    printText("Press Right", 30,70,RGBToWord(0,0,0),RGBToWord(255,255,255));
+    printText("To Restart", 31,85,RGBToWord(0,0,0),RGBToWord(255,255,255));
+    uint32_t seed = 0;
+    while (!rightPressed() || seed == 0){
+        seed++;
+    }
+
+    // Reset count and background, display an image, initialize the pseudo-random number generator,
+    // and set a barrier color
+    count = 0;
+    fillRectangle(0,0,128,159,RGBToWord(0,0,0));
+    putImage(45,20,41,42,flowey,0,0);
+    initprbs(seed);
+    printDecimal(prbs());
+    fillRectangle(0,0,128,65,RGBToWord(255,255,255));
+    if (levelCount == 1){
+        lvl1();
+    }
 }
 
+// Main function for the game
 int main()
 {
+    // Declare variables for character and enemy positions
 	int hinverted = 0;
 	int vinverted = 0;
 	int toggle = 0;
@@ -265,6 +322,8 @@ int main()
 	uint16_t oldy = y;
 	uint16_t hitboxx = random(0,100);
 	uint16_t hitboxy = random(65,140);
+
+    // Initialize hardware and display starting messages
 	initSerial();
 	initClock();
 	initSysTick();
@@ -276,9 +335,12 @@ int main()
 	printText("Press Left", 30,70,RGBToWord(0,0,0),RGBToWord(255,255,255));
 	printText(" To Start", 30,85,RGBToWord(0,0,0),RGBToWord(255,255,255));
 	uint32_t seed = 0;
+
+    // Wait for the Left button to be pressed to start the game
 	while (!leftPressed() || seed == 0){
 		seed++;
 	}
+
 	//Sets Background To Black
 	fillRectangle(0,0,128,159,RGBToWord(0,0,0));
 	//Sets Barrier to White
@@ -286,8 +348,11 @@ int main()
 	initprbs(seed);
 	printDecimal(prbs());
 	lvl1();
+
+    // Main game loop
 	while(1)
 	{
+		// Move the bottom enemies
 		if (enemyy > 66)
 		{
 			oldenemyx = enemyx;
@@ -302,11 +367,12 @@ int main()
 			enemyx = random(0,65);
 			enemyy = 150;
 			fillRectangle(enemyx,enemyy,20,5,RGBToWord(255,255,255));
-			if (count != 2){
+			if (count != 3){
 				count += 1;
 			}
 		}
-		//New Enemy Spawns From Top For Level 2
+
+		// New Enemy Spawns From Top For Level 2
 		if (levelCount >= 2){
 			if (enemy3y < 159){
 				oldenemy3x = enemy3x;
@@ -316,179 +382,203 @@ int main()
 				fillRectangle(enemy3x,enemy3y,20,5,RGBToWord(255,255,255));
 			}
 			else {
-			fillRectangle(enemy3x,enemy3y,20,5,RGBToWord(0,0,0));
-			enemy3x = random(0,44);
-			enemy3y = 65;
-			fillRectangle(enemy3x,enemy3y,20,5,RGBToWord(255,255,255));
+				fillRectangle(enemy3x,enemy3y,20,5,RGBToWord(0,0,0));
+				enemy3x = random(0,44);
+				enemy3y = 65;
+				fillRectangle(enemy3x,enemy3y,20,5,RGBToWord(255,255,255));
 			}
 		}
-		if (levelCount >= 3){
-			if (enemy5x < 108){
-				oldenemy5x = enemy5x;
-				oldenemy5y = enemy5y;
-				enemy5x = enemy5x + 2;
-				fillRectangle(oldenemy5x,oldenemy5y,20,5,RGBToWord(0,0,0));
-				fillRectangle(enemy5x,enemy5y,20,5,RGBToWord(255,255,255));
-			}
-			else {
-			fillRectangle(enemy5x,enemy5y,20,5,RGBToWord(0,0,0));
-			enemy5x = 0;
-			enemy5y = random(65, 154);
-			fillRectangle(enemy5x,enemy5y,20,5,RGBToWord(255,255,255));
-			}
-		}
-		if (enemy2y > 66)
+		if (levelCount >= 3) 
 		{
+    		// Check if enemy5 is within the screen boundaries
+    		if (enemy5x < 108) 
+			{
+        		// Save old enemy5 position
+        		oldenemy5x = enemy5x;
+        		oldenemy5y = enemy5y;
+        		// Move enemy5 to the right
+        		enemy5x = enemy5x + 2;
+        		// Erase old position and draw new position
+        		fillRectangle(oldenemy5x, oldenemy5y, 20, 5, RGBToWord(0, 0, 0));
+        		fillRectangle(enemy5x, enemy5y, 20, 5, RGBToWord(255, 255, 255));
+    		}
+			else 
+			{
+				// If enemy5 is outside the screen, erase it and respawn at the left
+				fillRectangle(enemy5x, enemy5y, 20, 5, RGBToWord(0, 0, 0));
+				enemy5x = 0;
+				enemy5y = random(65, 154);
+				fillRectangle(enemy5x, enemy5y, 20, 5, RGBToWord(255, 255, 255));
+			}
+		}
+
+		// Move the bottom center enemy (enemy2)
+		if (enemy2y > 66) {
+			// Save old enemy2 position
 			oldenemy2x = enemy2x;
 			oldenemy2y = enemy2y;
+			// Move enemy2 upwards
 			enemy2y = enemy2y - 1;
-			fillRectangle(oldenemy2x,oldenemy2y,20,5,RGBToWord(0,0,0));
-			fillRectangle(enemy2x,enemy2y,20,5,RGBToWord(255,255,255));
-			if (count == 2)
-			{
-				fillRectangle(hitboxx,hitboxy,10,10,RGBToWord(255,255,0));
+			// Erase old position and draw new position
+			fillRectangle(oldenemy2x, oldenemy2y, 20, 5, RGBToWord(0, 0, 0));
+			fillRectangle(enemy2x, enemy2y, 20, 5, RGBToWord(255, 255, 255));
+
+			// If it's the third count, draw a yellow hitbox below enemy2
+			if (count == 3) {
+				fillRectangle(hitboxx, hitboxy, 10, 10, RGBToWord(255, 255, 0));
 			}
 		}
-		else
-		{
-			fillRectangle(enemy2x,enemy2y,20,5,RGBToWord(0,0,0));
-			enemy2x = random(50,108);
+		else {
+			// If enemy2 is outside the screen, erase it and respawn at the top
+			fillRectangle(enemy2x, enemy2y, 20, 5, RGBToWord(0, 0, 0));
+			enemy2x = random(50, 108);
 			enemy2y = 150;
-			fillRectangle(enemy2x,enemy2y,20,5,RGBToWord(255,255,255));
+			fillRectangle(enemy2x, enemy2y, 20, 5, RGBToWord(255, 255, 255));
 		}
-		if (levelCount >= 2){
-			if (enemy4y < 159){
+
+		// Move the top right enemy (enemy4) for level 2 and higher
+		if (levelCount >= 2) {
+			if (enemy4y < 159) {
 				oldenemy4x = enemy4x;
 				oldenemy4y = enemy4y;
 				enemy4y = enemy4y + 1;
-				fillRectangle(oldenemy4x,oldenemy4y,20,5,RGBToWord(0,0,0));
-				fillRectangle(enemy4x,enemy4y,20,5,RGBToWord(255,255,255));
+				fillRectangle(oldenemy4x, oldenemy4y, 20, 5, RGBToWord(0, 0, 0));
+				fillRectangle(enemy4x, enemy4y, 20, 5, RGBToWord(255, 255, 255));
 			}
-			else{
-			fillRectangle(enemy4x,enemy4y,20,5,RGBToWord(0,0,0));
-			enemy4x = random(64,108);
-			enemy4y = 65;
-			fillRectangle(enemy4x,enemy4y,20,5,RGBToWord(255,255,255));
+			else {
+				fillRectangle(enemy4x, enemy4y, 20, 5, RGBToWord(0, 0, 0));
+				enemy4x = random(64, 108);
+				enemy4y = 65;
+				fillRectangle(enemy4x, enemy4y, 20, 5, RGBToWord(255, 255, 255));
 			}
 		}
-		if (levelCount >= 3){
-			if (enemy6x > 0){
+
+		// Move the top left enemy (enemy6) for level 3
+		if (levelCount >= 3) {
+			if (enemy6x > 0) {
 				oldenemy6x = enemy6x;
 				oldenemy6y = enemy6y;
 				enemy6x = enemy6x - 2;
-				fillRectangle(oldenemy6x,oldenemy6y,20,5,RGBToWord(0,0,0));
-				fillRectangle(enemy6x,enemy6y,20,5,RGBToWord(255,255,255));
+				fillRectangle(oldenemy6x, oldenemy6y, 20, 5, RGBToWord(0, 0, 0));
+				fillRectangle(enemy6x, enemy6y, 20, 5, RGBToWord(255, 255, 255));
 			}
 			else {
-			fillRectangle(enemy6x,enemy6y,20,5,RGBToWord(0,0,0));
-			enemy6x = 108;
-			enemy6y = random(65, 154);
-			fillRectangle(enemy6x,enemy6y,20,5,RGBToWord(255,255,255));
+				fillRectangle(enemy6x, enemy6y, 20, 5, RGBToWord(0, 0, 0));
+				enemy6x = 108;
+				enemy6y = random(65, 154);
+				fillRectangle(enemy6x, enemy6y, 20, 5, RGBToWord(255, 255, 255));
 			}
 		}
+			// Reset movement flags
 		hmoved = vmoved = 0;
 		hinverted = vinverted = 0;
-		if ((GPIOB->IDR & (1 << 4))==0) // right pressed
-		{					
-			if (x < 118)
-			{
+
+		// Check if the right button is pressed
+		if ((GPIOB->IDR & (1 << 4)) == 0) {
+			// Move right if within screen boundaries
+			if (x < 118) {
 				x = x + 1;
 				hmoved = 1;
-				hinverted=0;
-			}						
+				hinverted = 0;
+			}
 		}
-		if ((GPIOB->IDR & (1 << 5))==0) // left pressed
-		{			
-			
-			if (x > 0)
-			{
+
+		// Check if the left button is pressed
+		if ((GPIOB->IDR & (1 << 5)) == 0) {
+			// Move left if within screen boundaries
+			if (x > 0) {
 				x = x - 1;
 				hmoved = 1;
-				hinverted=1;
-			}			
+				hinverted = 1;
+			}
 		}
-		if ( (GPIOA->IDR & (1 << 11)) == 0) // down pressed
-		{
-			if (y < 150)
-			{
-				y = y + 1;			
+
+		// Check if the down button is pressed
+		if ((GPIOA->IDR & (1 << 11)) == 0) {
+			// Move down if within screen boundaries
+			if (y < 150) {
+				y = y + 1;
 				vmoved = 1;
 				vinverted = 0;
 			}
 		}
-		if (y > 65)
-		{
-			if ( (GPIOA->IDR & (1 << 8)) == 0) // up pressed
-			{			
-				if (y > 16)
-				{
+
+		// Check if the up button is pressed
+		if (y > 65) {
+			if ((GPIOA->IDR & (1 << 8)) == 0) {
+				// Move up if within screen boundaries
+				if (y > 16) {
 					y = y - 1;
 					vmoved = 1;
 					vinverted = 1;
 				}
 			}
 		}
-		if (levelCount != 3)
-		{
-			if ((vmoved) || (hmoved))
-			{
-				// only redraw if there has been some movement (reduces flicker)
-				fillRectangle(oldx,oldy,10,9,0);
-				oldx = x;
-				oldy = y;					
-				if (hmoved)
-				{
-					if (toggle)
-					{
-						putImage(x,y,10,9,heart,0,0);
-						putImage(10,20,41,42,flowey,0,0);
-					}
-					else
-					{
-						putImage(x,y,10,9,heart,0,0);
-						putImage(10,20,41,42,flowey,0,0);
-					}
 
-					toggle = toggle ^ 1;
-				}
-				else
-				{
-					putImage(x,y,10,9,heart,0,0);
-				}
-			}	
-		}
-		else
-		{
-			if ((vmoved) || (hmoved))
-			{
-				// only redraw if there has been some movement (reduces flicker)
-				fillRectangle(oldx,oldy,10,9,0);
+		// Redraw the character only if there has been some movement (reduce flicker)
+		if (levelCount != 3) {
+			if (vmoved || hmoved) {
+				fillRectangle(oldx, oldy, 10, 9, 0);
 				oldx = x;
-				oldy = y;					
-				if (hmoved)
-				{
-					if (toggle)
-					{
-						putImage(x,y,10,9,heart,0,0);
-						putImage(10,20,41,42,angryFlowey,0,0);
+				oldy = y;
+				if (hmoved) {
+					// Redraw character and another image based on toggle state
+					if (toggle) {
+						putImage(x, y, 10, 9, heart, 0, 0);
+						putImage(10, 20, 41, 42, flowey, 0, 0);
+					} else {
+						putImage(x, y, 10, 9, heart, 0, 0);
+						putImage(10, 20, 41, 42, flowey, 0, 0);
 					}
-					else
-					{
-						putImage(x,y,10,9,heart,0,0);
-						putImage(10,20,41,42,angryFlowey,0,0);
-					}
-
-					toggle = toggle ^ 1;
-				}
-				else
-				{
-					putImage(x,y,10,9,heart,0,0);
+					toggle = toggle ^ 1;  // Toggle between states
+				} else {
+					putImage(x, y, 10, 9, heart, 0, 0);
 				}
 			}
-		}	
-		//Checks If User Is Inside The Enemy	
-		if (isInside(enemyx,enemyy,20,5,x,y) || isInside(enemyx,enemyy,20,5,x+10,y) || isInside(enemyx,enemyy,20,5,x,y+9) || isInside(enemyx,enemyy,20,5,x+10,y+9)){
-			//Sets The Character Coords Back To Default
+		} 
+		else 
+		{
+			// Redraw the character with a different image for level 3
+			if (vmoved || hmoved) {
+				fillRectangle(oldx, oldy, 10, 9, 0);
+				oldx = x;
+				oldy = y;
+				if (hmoved) {
+					if (toggle) {
+						putImage(x, y, 10, 9, heart, 0, 0);
+						putImage(10, 20, 41, 42, angryFlowey, 0, 0);
+					} else {
+						putImage(x, y, 10, 9, heart, 0, 0);
+						putImage(10, 20, 41, 42, angryFlowey, 0, 0);
+					}
+					toggle = toggle ^ 1;
+				} else {
+					putImage(x, y, 10, 9, heart, 0, 0);
+				}
+			}
+		}
+		// Check if the character is inside the first set of enemies
+		if (isInside(enemyx, enemyy, 20, 5, x, y) || isInside(enemyx, enemyy, 20, 5, x + 10, y) || isInside(enemyx, enemyy, 20, 5, x, y + 9) || isInside(enemyx, enemyy, 20, 5, x + 10, y + 9)) {
+			// Reset character and enemies to default positions
+			x = 64;
+			y = 105;
+			enemyx = 0;
+			enemyy = 150;
+			enemy2x = 64;
+			enemy2y = 150;
+			enemy3x = 0;
+			enemy3y = 65;
+			enemy4x = 64;
+			enemy4y = 65;
+			enemy5x = 0;
+			enemy5y = random(65, 154);
+			enemy6x = 108;
+			enemy6y = random(65, 154);
+			count = 0;
+			death();
+			InitialiseGame(levelCount);
+		} else if (isInside(enemy2x, enemy2y, 20, 5, x, y) || isInside(enemy2x, enemy2y, 20, 5, x + 10, y) || isInside(enemy2x, enemy2y, 20, 5, x, y + 9) || isInside(enemy2x, enemy2y, 20, 5, x + 10, y + 9)) {
+			// Reset character and enemies to default positions
 			x = 64;
 			y = 105;
 			enemyx = 0;
@@ -507,29 +597,11 @@ int main()
 			death();
 			InitialiseGame(levelCount);
 		}
-		else if (isInside(enemy2x,enemy2y,20,5,x,y) || isInside(enemy2x,enemy2y,20,5,x+10,y) || isInside(enemy2x,enemy2y,20,5,x,y+9) || isInside(enemy2x,enemy2y,20,5,x+10,y+9)){
-			//Sets The Character Coords Back To Default
-			x = 64;
-			y = 105;
-			enemyx = 0;
-			enemyy = 150;
-			enemy2x = 64;
-			enemy2y = 150;
-			enemy3x = 0;
-			enemy3y = 65;
-			enemy4x = 64;
-			enemy4y = 65;
-			enemy5x = 0;
-			enemy5y = random(65, 154);
-			enemy6x = 108;
-			enemy6y = random(65, 154);
-			count = 0;
-			death();
-			InitialiseGame(levelCount);
-		}
-		if (levelCount >= 2){
-			if (isInside(enemy3x,enemy3y,20,5,x,y) || isInside(enemy3x,enemy3y,20,5,x+10,y) || isInside(enemy3x,enemy3y,20,5,x,y+9) || isInside(enemy3x,enemy3y,20,5,x+10,y+9)){
-				//Sets The Character Coords Back To Default
+
+		// Check collision for the second set of enemies if the level is 2 or higher
+		if (levelCount >= 2) {
+			if (isInside(enemy3x, enemy3y, 20, 5, x, y) || isInside(enemy3x, enemy3y, 20, 5, x + 10, y) || isInside(enemy3x, enemy3y, 20, 5, x, y + 9) || isInside(enemy3x, enemy3y, 20, 5, x + 10, y + 9)) {
+				// Reset character and enemies to default positions
 				x = 64;
 				y = 105;
 				enemyx = 0;
@@ -547,9 +619,8 @@ int main()
 				count = 0;
 				death();
 				InitialiseGame(levelCount);
-			}
-			else if (isInside(enemy4x,enemy4y,20,5,x,y) || isInside(enemy4x,enemy4y,20,5,x+10,y) || isInside(enemy4x,enemy4y,20,5,x,y+9) || isInside(enemy4x,enemy4y,20,5,x+10,y+9)){
-				//Sets The Character Coords Back To Default
+			} else if (isInside(enemy4x, enemy4y, 20, 5, x, y) || isInside(enemy4x, enemy4y, 20, 5, x + 10, y) || isInside(enemy4x, enemy4y, 20, 5, x, y + 9) || isInside(enemy4x, enemy4y, 20, 5, x + 10, y + 9)) {
+				// Reset character and enemies to default positions
 				x = 64;
 				y = 105;
 				enemyx = 0;
@@ -569,18 +640,22 @@ int main()
 				InitialiseGame(levelCount);
 			}
 		}
+
+		// Delay to control the speed of the game
 		delay(50);
-		if (isInside(hitboxx,hitboxy,20,5,x,y) || isInside(hitboxx,hitboxy,20,5,x+10,y) || isInside(hitboxx,hitboxy,20,5,x,y+9) || isInside(hitboxx,hitboxy,20,5,x+10,y+9)){
-			// Checks if user is inside the yellow square
-			if (count >= 2){
-				if (levelCount == 3)
-				{
+
+		// Check if the character is inside the yellow square
+		if (isInside(hitboxx, hitboxy, 20, 5, x, y) || isInside(hitboxx, hitboxy, 20, 5, x + 10, y) || isInside(hitboxx, hitboxy, 20, 5, x, y + 9) || isInside(hitboxx, hitboxy, 20, 5, x + 10, y + 9)) {
+			// Check if the user has collected enough items to progress to the next level
+			if (count >= 3) {
+				// If it's the last level, end the game; otherwise, move to the next level
+				if (levelCount == 3) {
 					end();
-				}
-				else
-				{
+				} else {
 					levelCount += 1;
 				}
+
+				// Reset character and enemies to default positions, create a new yellow square, and show completion message
 				x = 64;
 				y = 105;
 				enemyx = 0;
@@ -591,12 +666,13 @@ int main()
 				enemy3y = 65;
 				enemy4x = 64;
 				enemy4y = 65;
-				hitboxx = random(0,100);
-				hitboxy = random(65,140);
+				hitboxx = random(0, 100);
+				hitboxy = random(65, 140);
 				completed();
 				InitialiseGame(levelCount);
 			}
 		}
+		// Check collision for the third set of enemies if the level is 3
 		if (levelCount >= 3){
 			if (isInside(enemy5x,enemy5y,20,5,x,y) || isInside(enemy5x,enemy5y,20,5,x+10,y) || isInside(enemy5x,enemy5y,20,5,x,y+9) || isInside(enemy5x,enemy5y,20,5,x+10,y+9)){
 				//Sets The Character Coords Back To Default
