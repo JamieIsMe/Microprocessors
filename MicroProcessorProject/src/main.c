@@ -195,8 +195,32 @@ void end()
 	delay(2500);
 	printText("Goodbye",35,90,RGBToWord(0,0,0),RGBToWord(255,255,255));
 	delay(3000);
+	fillRectangle(0,0,128,159,RGBToWord(255,255,255));
+	printText("You Beat",35,70,RGBToWord(0,255,0),RGBToWord(255,255,255));
+	printText("The Game!",33,90,RGBToWord(0,255,0),RGBToWord(255,255,255));
+	delay(3000);
 	levelCount = 1;
-	InitialiseGame(levelCount);
+
+	fillRectangle(0,0,128,159,RGBToWord(255,255,255));
+	putImage(15,30,97,21,title,0,0);
+	printText("Press Right", 30,70,RGBToWord(0,0,0),RGBToWord(255,255,255));
+	printText("To Restart", 31,85,RGBToWord(0,0,0),RGBToWord(255,255,255));
+	uint32_t seed = 0;
+	while (!leftPressed() || seed == 0){
+		seed++;
+	}
+	count = 0;
+	//Sets Background To Black
+	fillRectangle(0,0,128,159,RGBToWord(0,0,0));
+	putImage(45,20,41,42,flowey,0,0);
+	initprbs(seed);
+	printDecimal(prbs());
+	//Section Below For Testing Collisions
+	//Sets Barrier to Dimgrey
+	fillRectangle(0,0,128,65,RGBToWord(255,255,255));
+	if (levelCount == 1){
+		lvl1();
+	}
 }
 
 int main()
@@ -553,7 +577,10 @@ int main()
 				{
 					end();
 				}
-				levelCount += 1;
+				else
+				{
+					levelCount += 1;
+				}
 				x = 64;
 				y = 105;
 				enemyx = 0;
